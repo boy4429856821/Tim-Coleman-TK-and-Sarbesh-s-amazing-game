@@ -1,25 +1,40 @@
 import pygame
 import GraphicsLib as GLib
 from Util import *
+import random
 
+
+EnemyPositionList=[50,100,150,200,250,300,350,400,450,500,550,600]
 # a great example of an object that can move on the screen
-class Hero:
+class enemy1():
+    def __init__(self):
+        self.img= GLib.enemy1
+        self.lives=1
+        self.x = 1225
+        self.vx = -1
+        self.y=EnemyPositionList[random.randint(0,len(EnemyPositionList)-1)]
+    
+    def update(self):
+        self.x += self.vx
+
+class Sprite:
     def __init__(self):
         # ------------------------
         # [REQUIRED PART] for any class that will be drawn on the screen
         # Grab the surface that Graphics people worked very hard on
         self.img = GLib.character1
         # Set the initial coordinate of this object
-        self.x = 0
-        self.y = 0
+        self.x = 100
+        self.y = 50
         # ------------------------
-        # TODO: add more properties to Hero based on your game
+        # TODO: add more properties to Sprite based on your game
         self.vx = 0
         self.vy = 0
+        self.lives=10
 
     # an example of updating position of the object
     def update(self):
-        # TODO: what else hero is going to do in each frame
+        # TODO: what else Sprite is going to do in each frame
         self.x += self.vx
         self.y += self.vy
 
@@ -35,7 +50,8 @@ class Game:
     def __init__(self):
         # initialize the timer to zero. This is like a little clock
         self.timer = 0
-        self.hero = Hero()
+        self.sprite = Sprite()
+        self.enemyList = []
         # self.ball = Ball(250, 250, GLib.ballSpriteBLUE)
         # TODO: add any variables you think will be needed as a property of Game
         # ...
@@ -43,7 +59,7 @@ class Game:
         # .
         # TODO: add any objects that you would like to be drawn on the screen
         # Make sure that all of those objects has x, y and img defined as their property
-        self.objectsOnScreen = [self.hero]
+        self.objectsOnScreen = [self.sprite, self.enemyList]
     
 
 
@@ -59,18 +75,15 @@ class Game:
         self.timer += 1
         # check what state the game is at
         if state == "Normal":
-            # TODO: what the game would do in this state
-            # update the position of hero based on its velocity
-            # self.hero.update()
-            # use showAnimationOn functon immported from Util module,
-            # it taks three argument, the object to have animation, the animation, and the frameNumber
-            # this example switch to the next frame every 5 ticks
-            #showAnimationOn(self.hero, GLib.characterAnimationL, self.timer / 1)
-            # bounceIn(self.hero, 0, 0, 500, 500)
-            # wrapAroundIn(self.hero, 0, 0, 500, 500)
-            pass
+            if self.timer % 10 == 0:
+                e=enemy1()
+                self.enemyList.append(e)
+            for e in self.enemyList:
+                e.update()
+                if e.x<=-50:
+                    self.enemyList.remove(e)
         elif state == "MovingLeft" :
-            showAnimationOn(self.hero, GLib.characterAnimationL, self.timer / 1)
+            showAnimationOn(self.sprite, GLib.characterAnimationL, self.timer / 1)
         else:
             print("Undefined game state " + str(state))
             exit()
@@ -92,5 +105,11 @@ class Game:
         screen.fill(GLib.WHITE)    
         screen.blit(GLib.Realbackground, (0, 0))
 
-        for obj in self.objectsOnScreen:
-            screen.blit(obj.img, (obj.x, obj.y))
+        stack = [self.objectsOnScreen]
+        while len(stack) > 0:
+            objectsLs = stack.pop()
+            for obj in objectsLs:
+                if type(obj) is list:
+                    stack.append(obj)
+                else:
+                    screen.blit(obj.img, (obj.x, obj.y))

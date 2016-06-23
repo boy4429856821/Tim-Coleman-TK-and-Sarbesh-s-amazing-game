@@ -44,27 +44,26 @@ while True:
             exit()
         # TODO: replace the reset with your designed input
         if event.type == pygame.KEYDOWN:
-            
             if event.key == pygame.K_LEFT:
-                game.hero.x += -20
+                game.sprite.x += -20
                 print("ok")
             if event.key == pygame.K_RIGHT:
-                game.hero.x += 2
+                game.sprite.x += 2
                 state = "MovingLeft"            
             if event.key == pygame.K_UP:
-                game.hero.y += -20
+                game.sprite.y += -20
             if event.key == pygame.K_DOWN:
-                game.hero.y += 20
+                game.sprite.y += 20
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT:
-                game.hero.x += 0
+                game.sprite.x += 0
             if event.key == pygame.K_RIGHT:
                 state = "Normal"
-                game.hero.x += 0
+                game.sprite.x += 0
             if event.key == pygame.K_UP:
-                game.hero.y += 0
+                game.sprite.y += 0
             if event.key == pygame.K_DOWN:
-                game.hero.y += 0
+                game.sprite.y += 0
 
     #-------------------------
     # The main game logic block
@@ -84,5 +83,5 @@ while True:
     
     pygame.display.flip()
     # ask pygame to display everythong on the GUI
-    pygame.time.wait(100)
+    pygame.time.wait(10)
     # delay the time, so can see the Windows, controls the frame rate

@@ -5,7 +5,9 @@ ORANGE = (255, 153, 0)
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
-
+orange=(255,153,0)
+black = (0,0,0)
+red = (255,25,25)
 
 character1 = pygame.image.load('swatshootingcycle1.png')
 character1= pygame.transform.scale(character1,(50,55))
@@ -19,3 +21,7 @@ Realbackground = pygame.image.load('Mbackground.png')
 Realbackground= pygame.transform.scale(Realbackground,(775,500))
 characterAnimationL = [character1,character2,]
 
+
+enemy1 = pygame.Surface((50,50))
+pygame.draw.circle(enemy1,orange,(25,25),25)
+        
