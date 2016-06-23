@@ -23,7 +23,7 @@ from GameLogic import *
 game = Game()
 
 # Let state1 be the initial state
-state = "Normal"
+state = "StartScreen"
 
 #-------------------------
 # Our Main Loop
@@ -68,6 +68,14 @@ while True:
                 game.sprite.y += 0
             if event.key == pygame.K_DOWN:
                 game.sprite.y += 0
+        if event.type== pygame.MOUSEBUTTONDOWN:
+            x, y = event.pos
+            if state == "StartScreen":
+                game.objectsOnScreen = [game.sprite, game.enemyList]
+                state="Normal"
+
+
+
 
     #-------------------------
     # The main game logic block
@@ -79,7 +87,7 @@ while True:
     #-------------------------
     # The graphics block
     #-------------------------
-    game.draw(screen)
+    game.draw(state, screen)
 
     #-------------------------
     # display this frame and 

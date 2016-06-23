@@ -69,7 +69,7 @@ class Game:
         # .
         # TODO: add any objects that you would like to be drawn on the screen
         # Make sure that all of those objects has x, y and img defined as their property
-        self.objectsOnScreen = [self.sprite, self.enemyList]
+        self.objectsOnScreen = []
     
 
 
@@ -94,6 +94,8 @@ class Game:
                     self.enemyList.remove(e)
             #elif state == "MovingLeft" :
             showAnimationOn(self.sprite, self.sprite.MovementDetection(), self.timer )
+        elif state == "StartScreen":
+            pass
         else:
             print("Undefined game state " + str(state))
             exit()
@@ -107,13 +109,14 @@ class Game:
 
 
     # A method that does all the drawing for you.
-    def draw(self, screen):
+    def draw(self,state, screen):
         # The first line clear the screen
         # TODO: if you want a differnt background, 
             # you can replace the next line                     
-            
-        screen.fill(GLib.WHITE)    
-        screen.blit(GLib.Realbackground, (0, 0))
+        if state == "Normal":
+            screen.blit(GLib.Realbackground, (0, 0))
+        elif state == "StartScreen":
+            screen.fill(GLib.WHITE)    
 
         stack = [self.objectsOnScreen]
         while len(stack) > 0:
