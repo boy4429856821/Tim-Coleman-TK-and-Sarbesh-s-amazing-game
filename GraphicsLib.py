@@ -20,6 +20,8 @@ character2.set_colorkey(WHITE)
 Realbackground = pygame.image.load('Mbackground.png')
 Realbackground= pygame.transform.scale(Realbackground,(1300,800))
 characterAnimationL = [character1,character2]
+Startscreen = pygame.image.load("ChocoBible.png")
+Startscreen = pygame.transform.scale(Startscreen,(1300,800))
 
 
 enemy1 = pygame.Surface((50,50))

@@ -116,7 +116,7 @@ class Game:
         if state == "Normal":
             screen.blit(GLib.Realbackground, (0, 0))
         elif state == "StartScreen":
-            screen.fill(GLib.WHITE)    
+            screen.blit(GLib.Startscreen,(0,0))    
 
         stack = [self.objectsOnScreen]
         while len(stack) > 0:
