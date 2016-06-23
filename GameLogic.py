@@ -26,6 +26,8 @@ class Sprite:
         # Set the initial coordinate of this object
         self.x = 100
         self.y = 50
+        self.pastx = self.x
+        self.pasty = self.y
         # ------------------------
         # TODO: add more properties to Sprite based on your game
         self.vx = 0
@@ -37,6 +39,14 @@ class Sprite:
         # TODO: what else Sprite is going to do in each frame
         self.x += self.vx
         self.y += self.vy
+    def MovementDetection(self):
+        CharacterAnimationL = [GLib.character1]
+        if self.x != self.pastx or self.y != self.pasty:
+            CharacterAnimationL= GLib.characterAnimationL
+        self.pastx = self.x
+        self.pasty = self.y
+        return CharacterAnimationL
+            
 
 # the minimum class for an object that can be displaced on the screen
 class Ball:
@@ -82,8 +92,8 @@ class Game:
                 e.update()
                 if e.x<=-50:
                     self.enemyList.remove(e)
-        elif state == "MovingLeft" :
-            showAnimationOn(self.sprite, GLib.characterAnimationL, self.timer / 1)
+            #elif state == "MovingLeft" :
+            showAnimationOn(self.sprite, self.sprite.MovementDetection(), self.timer )
         else:
             print("Undefined game state " + str(state))
             exit()
