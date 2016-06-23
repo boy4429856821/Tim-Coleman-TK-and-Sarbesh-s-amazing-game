@@ -48,7 +48,7 @@ while True:
                 game.sprite.x += -20
                 print("ok")
             if event.key == pygame.K_RIGHT:
-                game.sprite.x += 10
+                game.sprite.x += 20
                 #state = "MovingLeft"            
             if event.key == pygame.K_UP:
                 game.sprite.y += -20
