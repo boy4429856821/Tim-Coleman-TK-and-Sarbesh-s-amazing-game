@@ -57,7 +57,7 @@ vx=-1
 x=1225
 y=EnemyPositionList[random.randint(0,len(EnemyPositionList)-1)]
 vy=0
-timer=0
+timer=2
 
 
 gameLoop=True
