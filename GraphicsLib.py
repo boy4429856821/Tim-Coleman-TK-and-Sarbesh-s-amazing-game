@@ -33,4 +33,5 @@ ShootingSprite = [character1,shotsFired]
 
 enemy1 = pygame.Surface((50,50))
 pygame.draw.circle(enemy1,orange,(25,25),5)
+
         
