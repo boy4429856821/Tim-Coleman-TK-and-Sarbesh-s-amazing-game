@@ -40,7 +40,7 @@ class Sprite:
         bounceIn(self,0,0,1225,700)
         
     def MovementDetection(self):
-        CharacterAnimationL = [GLib.character1,GLib.shotsFired]
+        CharacterAnimationL = [GLib.character1,]
         if self.x != self.pastx or self.y != self.pasty:
             CharacterAnimationL= GLib.characterAnimationL
         self.pastx = self.x
@@ -98,7 +98,11 @@ class Game:
         elif state == "StartScreen":
             pass
         elif state == "Attack":
-            showAnimationOn(self.sprite, GLib.ShootingSprite, self.timer/1)
+            showAnimationOn(self.sprite, GLib.ShootingSprite, self.timer/2)
+            for e in self.enemyList:
+                e.update()
+                if e.x<=-50:
+                    self.enemyList.remove(e)
         else:
             print("Undefined game state " + str(state))
             exit()
