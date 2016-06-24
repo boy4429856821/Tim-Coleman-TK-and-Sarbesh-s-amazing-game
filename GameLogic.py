@@ -16,7 +16,19 @@ class enemy1():
     
     def update(self):
         self.x += self.vx
-
+        
+        
+class Bullet:
+# self.sprite.x , self.sprite.y
+    def __init__(self, x, y): 
+        self.x=x
+        self.y=y
+        self.img=GLib.bullet
+        
+ 
+    def update(self):
+        self.x += 10
+        
 class Sprite:
     def __init__(self):
         # ------------------------
@@ -62,6 +74,7 @@ class Game:
         self.timer = 0
         self.sprite = Sprite()
         self.enemyList = []
+        self.bulletList=[]
         # self.ball = Ball(250, 250, GLib.ballSpriteBLUE)
         # TODO: add any variables you think will be needed as a property of Game
         # ...
@@ -72,7 +85,8 @@ class Game:
         self.objectsOnScreen = []
     
 
-
+    def shoot(self):
+        self.bulletList.append( Bullet(self.sprite.x , self.sprite.y ))
     # Try to update all the elements
     # if you want to add another to the screen:                 self.objectsOnScreen.add(x)
     # if you want to remove a object from the screen:           self.objectsOnScreen.remove(x)
@@ -92,6 +106,8 @@ class Game:
                 e.update()
                 if e.x<=-50:
                     self.enemyList.remove(e)
+            for i in self.bulletList:
+                i.update()
             #elif state == "MovingLeft" :
             showAnimationOn(self.sprite, self.sprite.MovementDetection(), self.timer )
             self.sprite.update()
@@ -99,14 +115,12 @@ class Game:
             pass
         elif state == "Attack":
             showAnimationOn(self.sprite, GLib.ShootingSprite, self.timer/2)
-<<<<<<< HEAD
-            
-=======
+            for i in self.bulletList:
+                i.update()
             for e in self.enemyList:
                 e.update()
                 if e.x<=-50:
                     self.enemyList.remove(e)
->>>>>>> origin/master
         else:
             print("Undefined game state " + str(state))
             exit()
