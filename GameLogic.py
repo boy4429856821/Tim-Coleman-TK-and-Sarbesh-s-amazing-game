@@ -37,8 +37,8 @@ class Sprite:
     # an example of updating position of the object
     def update(self):
         # TODO: what else Sprite is going to do in each frame
-        self.x += self.vx
-        self.y += self.vy
+        bounceIn(self,0,0,1225,700)
+        
     def MovementDetection(self):
         CharacterAnimationL = [GLib.character1]
         if self.x != self.pastx or self.y != self.pasty:
@@ -94,8 +94,11 @@ class Game:
                     self.enemyList.remove(e)
             #elif state == "MovingLeft" :
             showAnimationOn(self.sprite, self.sprite.MovementDetection(), self.timer )
+            self.sprite.update()
         elif state == "StartScreen":
             pass
+        elif state == "Attack":
+            showAnimationOn(self.sprite, GLib.ShootingSprite, self.timer/1)
         else:
             print("Undefined game state " + str(state))
             exit()
@@ -114,9 +117,12 @@ class Game:
         # TODO: if you want a differnt background, 
             # you can replace the next line                     
         if state == "Normal":
-            screen.blit(GLib.Realbackground, (0, 0))
+            screen.blit(GLib.Realbackground, (-25, -15))
         elif state == "StartScreen":
-            screen.blit(GLib.Startscreen,(0,0))    
+            screen.blit(GLib.Startscreen,(0,0))
+        if state == "Attack":
+            screen.blit(GLib.Realbackground,(-25,-15))
+        
 
         stack = [self.objectsOnScreen]
         while len(stack) > 0:
