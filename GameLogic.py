@@ -98,7 +98,8 @@ class Game:
         elif state == "StartScreen":
             pass
         elif state == "Attack":
-            showAnimationOn(self.sprite, GLib.ShootingSprite, self.timer/1)
+            showAnimationOn(self.sprite, GLib.ShootingSprite, self.timer/2)
+            
         else:
             print("Undefined game state " + str(state))
             exit()
