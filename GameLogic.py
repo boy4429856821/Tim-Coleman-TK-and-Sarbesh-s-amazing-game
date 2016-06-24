@@ -13,8 +13,8 @@ class Score:
         self.y=5
         
     def update(self, scoreNum):
-        myfont=pygame.font.SysFont('Calibri',30)
-        self.img=myfont.render(str(scoreNum),1, GLib.WHITE)
+        myfont=pygame.font.SysFont('Calibri',40,bold=True)
+        self.img=myfont.render(str(scoreNum),1,GLib.RED)
 
 class enemy1():
     def __init__(self):
