@@ -40,13 +40,13 @@ class Sprite:
         bounceIn(self,0,0,1225,700)
         
     def MovementDetection(self):
-        CharacterAnimationL = [GLib.character1]
+        CharacterAnimationL = [GLib.character1,GLib.shotsFired]
         if self.x != self.pastx or self.y != self.pasty:
             CharacterAnimationL= GLib.characterAnimationL
         self.pastx = self.x
         self.pasty = self.y
         return CharacterAnimationL
-            
+                    
 
 # the minimum class for an object that can be displaced on the screen
 class Ball:
