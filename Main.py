@@ -56,7 +56,7 @@ while True:
                 game.sprite.y += 15
             if event.key == pygame.K_SPACE:
                 state = "Attack"
-                game.objectsOnScreen = [game.sprite, game.enemyList]
+               # game.objectsOnScreen = [game.sprite, game.enemyList]
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT:
                 game.sprite.x += 0
