@@ -27,7 +27,7 @@ class Bullet:
         
  
     def update(self):
-        self.x += 10
+        self.x += 25
         
 class Sprite:
     def __init__(self):
@@ -115,22 +115,12 @@ class Game:
             pass
         elif state == "Attack":
             showAnimationOn(self.sprite, GLib.ShootingSprite, self.timer/2)
-<<<<<<< HEAD
             for i in self.bulletList:
                 i.update()
-=======
-
-            
-
->>>>>>> origin/master
             for e in self.enemyList:
                 e.update()
                 if e.x<=-50:
                     self.enemyList.remove(e)
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
         else:
             print("Undefined game state " + str(state))
             exit()
