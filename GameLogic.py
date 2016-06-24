@@ -22,7 +22,7 @@ class enemy1():
         self.lives=1
         self.x = 1225
         self.vx = -1
-        self.y=EnemyPositionList[random.randint(0,len(EnemyPositionList)-1)]
+        self.y=EnemyPositionList[random.randint(5,len(EnemyPositionList)-1)]
     
     def update(self):
         self.x += self.vx
