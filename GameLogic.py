@@ -6,16 +6,15 @@ import random
 
 EnemyPositionList=[50,100,150,200,250,300,350,400,450,500,550,600]
 # a great example of an object that can move on the screen
-class score():
+class Score:
     def __init__(self):
         self.img= GLib.enemy1
         self.x = 1150
         self.y=5
-        self.scoreNumber=0
         
-    def update(self):
+    def update(self, scoreNum):
         myfont=pygame.font.SysFont('Calibri',30)
-        self.img=myfont.render(str(i),1,(white))
+        self.img=myfont.render(str(scoreNum),1, GLib.WHITE)
 
 class enemy1():
     def __init__(self):
@@ -88,6 +87,7 @@ class Game:
         self.sprite = Sprite()
         self.enemyList = []
         self.bulletList=[]
+        self.score = Score()
         # self.ball = Ball(250, 250, GLib.ballSpriteBLUE)
         # TODO: add any variables you think will be needed as a property of Game
         # ...
@@ -121,8 +121,7 @@ class Game:
                     self.enemyList.remove(e)
             for i in self.bulletList:
                 i.update()
-            #elif state == "MovingLeft" :
-            self.sprite.update()
+            self.score.update(self.timer//50)
             showAnimationOn(self.sprite, self.sprite.MovementDetection(), self.timer )
             self.sprite.update()
         elif state == "StartScreen":
