@@ -160,7 +160,7 @@ class Game:
             screen.blit(GLib.Realbackground,(-25,-15))
         
 
-<<<<<<< HEAD
+
         for obj in self.objectsOnScreen:
             if type(obj) is list:
                 for i in obj:
@@ -168,13 +168,10 @@ class Game:
             else:
                 screen.blit(obj.img, (obj.x, obj.y))
                     
-=======
-        stack = [self.objectsOnScreen]
-        while len(stack) > 0:
-            objectsLs = stack.pop()
-            for obj in objectsLs:
-                if type(obj) is list:
-                    stack.append(obj)
-                else:
-                    screen.blit(obj.img, (obj.x, obj.y))
->>>>>>> origin/master
+
+        for obj in self.objectsOnScreen:
+            if type(obj) is list:
+                for i in obj:
+                    screen.blit(i.img, (i.x, i.y))
+            else:
+                screen.blit(obj.img, (obj.x, obj.y))
