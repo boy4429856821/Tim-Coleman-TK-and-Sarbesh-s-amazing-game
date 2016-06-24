@@ -111,7 +111,7 @@ class Game:
         # increment the timer
         self.timer += 1
         # check what state the game is at
-        if state == "Normal":
+        if state == "Normal" or state == "Attack":
             if self.timer % 10 == 0:
                 e=enemy1()
                 self.enemyList.append(e)
@@ -122,18 +122,19 @@ class Game:
             for i in self.bulletList:
                 i.update()
             self.score.update(self.timer//50)
-            showAnimationOn(self.sprite, self.sprite.MovementDetection(), self.timer )
+            for i in self.bulletList:
+                for e in self.enemyList:
+                    if hasCollideRect(i, e):
+                        self.bulletList.remove(i)
+                        self.enemyList.remove(e)
+
+            if state == "Normal":
+                showAnimationOn(self.sprite, self.sprite.MovementDetection(), self.timer )
+            else:
+                showAnimationOn(self.sprite, GLib.ShootingSprite, self.timer/2)
             self.sprite.update()
         elif state == "StartScreen":
             pass
-        elif state == "Attack":
-            showAnimationOn(self.sprite, GLib.ShootingSprite, self.timer/2)
-            for i in self.bulletList:
-                i.update()
-            for e in self.enemyList:
-                e.update()
-                if e.x<=-50:
-                    self.enemyList.remove(e)
         else:
             print("Undefined game state " + str(state))
             exit()
