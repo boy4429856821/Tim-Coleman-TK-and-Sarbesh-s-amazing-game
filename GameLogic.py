@@ -31,8 +31,8 @@ class enemy1():
 class Bullet:
 # self.sprite.x , self.sprite.y
     def __init__(self, x, y): 
-        self.x=x
-        self.y=y
+        self.x=x-3
+        self.y=y+19
         self.img=GLib.bullet
         
  
@@ -159,11 +159,18 @@ class Game:
             screen.blit(GLib.Realbackground,(-25,-15))
         
 
-        stack = [self.objectsOnScreen]
-        while len(stack) > 0:
-            objectsLs = stack.pop()
-            for obj in objectsLs:
-                if type(obj) is list:
-                    stack.append(obj)
-                else:
-                    screen.blit(obj.img, (obj.x, obj.y))
+
+        for obj in self.objectsOnScreen:
+            if type(obj) is list:
+                for i in obj:
+                    screen.blit(i.img, (i.x, i.y))
+            else:
+                screen.blit(obj.img, (obj.x, obj.y))
+                    
+
+        for obj in self.objectsOnScreen:
+            if type(obj) is list:
+                for i in obj:
+                    screen.blit(i.img, (i.x, i.y))
+            else:
+                screen.blit(obj.img, (obj.x, obj.y))
