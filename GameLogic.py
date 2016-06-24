@@ -27,7 +27,19 @@ class enemy1():
     
     def update(self):
         self.x += self.vx
-
+        
+        
+class Bullet:
+# self.sprite.x , self.sprite.y
+    def __init__(self, x, y): 
+        self.x=x
+        self.y=y
+        self.img=GLib.bullet
+        
+ 
+    def update(self):
+        self.x += 25
+        
 class Sprite:
     def __init__(self):
         # ------------------------
@@ -59,7 +71,7 @@ class Sprite:
         self.pastx = self.x
         self.pasty = self.y
         return CharacterAnimationL
-            
+                    
 
 # the minimum class for an object that can be displaced on the screen
 class Ball:
@@ -75,6 +87,7 @@ class Game:
         self.timer = 0
         self.sprite = Sprite()
         self.enemyList = []
+        self.bulletList=[]
         # self.ball = Ball(250, 250, GLib.ballSpriteBLUE)
         # TODO: add any variables you think will be needed as a property of Game
         # ...
@@ -85,7 +98,8 @@ class Game:
         self.objectsOnScreen = []
     
 
-
+    def shoot(self):
+        self.bulletList.append( Bullet(self.sprite.x , self.sprite.y ))
     # Try to update all the elements
     # if you want to add another to the screen:                 self.objectsOnScreen.add(x)
     # if you want to remove a object from the screen:           self.objectsOnScreen.remove(x)
@@ -105,11 +119,22 @@ class Game:
                 e.update()
                 if e.x<=-50:
                     self.enemyList.remove(e)
+            for i in self.bulletList:
+                i.update()
             #elif state == "MovingLeft" :
             self.sprite.update()
             showAnimationOn(self.sprite, self.sprite.MovementDetection(), self.timer )
+            self.sprite.update()
         elif state == "StartScreen":
             pass
+        elif state == "Attack":
+            showAnimationOn(self.sprite, GLib.ShootingSprite, self.timer/2)
+            for i in self.bulletList:
+                i.update()
+            for e in self.enemyList:
+                e.update()
+                if e.x<=-50:
+                    self.enemyList.remove(e)
         else:
             print("Undefined game state " + str(state))
             exit()
@@ -128,9 +153,12 @@ class Game:
         # TODO: if you want a differnt background, 
             # you can replace the next line                     
         if state == "Normal":
-            screen.blit(GLib.Realbackground, (0, 0))
+            screen.blit(GLib.Realbackground, (-25, -15))
         elif state == "StartScreen":
-            screen.fill(GLib.WHITE)    
+            screen.blit(GLib.Startscreen,(0,0))
+        if state == "Attack":
+            screen.blit(GLib.Realbackground,(-25,-15))
+        
 
         stack = [self.objectsOnScreen]
         while len(stack) > 0:
