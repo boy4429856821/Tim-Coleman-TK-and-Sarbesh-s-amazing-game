@@ -6,6 +6,17 @@ import random
 
 EnemyPositionList=[50,100,150,200,250,300,350,400,450,500,550,600]
 # a great example of an object that can move on the screen
+class score():
+    def __init__(self):
+        self.img= GLib.enemy1
+        self.x = 1150
+        self.y=5
+        self.scoreNumber=0
+        
+    def update(self):
+        myfont=pygame.font.SysFont('Calibri',30)
+        self.img=myfont.render(str(i),1,(white))
+
 class enemy1():
     def __init__(self):
         self.img= GLib.enemy1
@@ -45,11 +56,13 @@ class Sprite:
         self.vx = 0
         self.vy = 0
         self.lives=10
+    
+    
 
     # an example of updating position of the object
     def update(self):
         # TODO: what else Sprite is going to do in each frame
-        bounceIn(self,0,0,1225,700)
+        bounceIn(self, 0, 0, 1225, 700)
         
     def MovementDetection(self):
         CharacterAnimationL = [GLib.character1]
@@ -109,6 +122,7 @@ class Game:
             for i in self.bulletList:
                 i.update()
             #elif state == "MovingLeft" :
+            self.sprite.update()
             showAnimationOn(self.sprite, self.sprite.MovementDetection(), self.timer )
             self.sprite.update()
         elif state == "StartScreen":
@@ -146,6 +160,7 @@ class Game:
             screen.blit(GLib.Realbackground,(-25,-15))
         
 
+<<<<<<< HEAD
         for obj in self.objectsOnScreen:
             if type(obj) is list:
                 for i in obj:
@@ -153,3 +168,13 @@ class Game:
             else:
                 screen.blit(obj.img, (obj.x, obj.y))
                     
+=======
+        stack = [self.objectsOnScreen]
+        while len(stack) > 0:
+            objectsLs = stack.pop()
+            for obj in objectsLs:
+                if type(obj) is list:
+                    stack.append(obj)
+                else:
+                    screen.blit(obj.img, (obj.x, obj.y))
+>>>>>>> origin/master
