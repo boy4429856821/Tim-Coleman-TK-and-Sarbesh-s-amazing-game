@@ -73,7 +73,7 @@ while True:
         if event.type== pygame.MOUSEBUTTONDOWN:
             x, y = event.pos
             if state == "StartScreen":
-                game.objectsOnScreen = [game.sprite, game.enemyList, game.bulletList]
+                game.objectsOnScreen = [game.bulletList, game.enemyList, game.sprite]
                 state="Normal"
 
 
