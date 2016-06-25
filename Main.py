@@ -2,12 +2,14 @@
 # initialize pygame
 #-------------------------
 import pygame
+import pygame.mixer
 # initialize pygame
 pygame.init()
 
 # create a screen of 500 * 500
 # TODO: change the size of the screen to your design
 screen = pygame.display.set_mode((1200, 700))
+
 # <<ADVANCED>> If you want KEYDOWN event to fire continuously, when a key is held down
 # ============ give it two argument, both of them are interval of KEYDOWN event
 pygame.key.set_repeat(50, 50)
@@ -45,7 +47,9 @@ while True:
         # TODO: replace the reset with your designed input
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                game.sprite.x += -8              
+                game.sprite.x += -8  
+              
+
             if event.key == pygame.K_RIGHT:
                 game.sprite.x += 8
                 
