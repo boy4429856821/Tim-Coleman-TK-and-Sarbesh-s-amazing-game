@@ -9,7 +9,7 @@ EnemyPositionList=[50,100,150,200,250,300,350,400,450,500,550,600]
 class Score:
     def __init__(self):
         self.img= GLib.enemy1
-        self.x = 1150
+        self.x = 1095
         self.y=5
         
     def update(self, scoreNum):
@@ -124,7 +124,7 @@ class Game:
                     self.enemyList.remove(e)
             for i in self.bulletList:
                 i.update()
-            self.score.update(self.timer//50)
+            self.score.update(self.timer//18)
             for i in self.bulletList:
                 for e in self.enemyList:
                     if hasCollideRect(i, e):
