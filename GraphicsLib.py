@@ -28,6 +28,10 @@ Realbackground= pygame.transform.scale(Realbackground,(1250,800))
 characterAnimationL = [character1,character2]
 Startscreen = pygame.image.load("ChocoBible.png")
 Startscreen = pygame.transform.scale(Startscreen,(1250,800))
+Startscreen2 = pygame.image.load("ChocoPages.png")
+Startscreen2 = pygame,transform.scale(Startscreen2, (1250 ,800))
+CopyRight = pygame.image.load("ChocoCopyright.png")
+CopyRight = pygame.transform.scale(CopyRight,(1250 ,(800))
 ShootingSprite = [character1,shotsFired]
 
 
