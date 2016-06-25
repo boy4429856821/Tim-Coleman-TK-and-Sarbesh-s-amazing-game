@@ -124,6 +124,8 @@ class Game:
                     self.enemyList.remove(e)
             for i in self.bulletList:
                 i.update()
+                if i.x>=1200:
+                   self.bulletList.remove(i)
             self.score.update(self.timer//50)
             for i in self.bulletList:
                 for e in self.enemyList:
