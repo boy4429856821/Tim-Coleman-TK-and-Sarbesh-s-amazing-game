@@ -31,8 +31,14 @@ Startscreen = pygame.transform.scale(Startscreen,(1250,800))
 ShootingSprite = [character1,shotsFired]
 
 
-enemy1 = pygame.Surface((50,50))
-pygame.draw.circle(enemy1,orange,(25,25),5)
+enemy1 = pygame.image.load('dinoVillan1.png')
+enemy1= pygame.transform.scale(enemy1,(60,50))
+enemy1.set_colorkey(WHITE)
+enemy1.set_alpha()
+enemy2 = pygame.image.load('dinoVillan2.png')
+enemy2= pygame.transform.scale(enemy2,(60,50))
+enemy2.set_colorkey(WHITE)
+enemy2.set_alpha()
 bullet=pygame.Surface((10,4))
 pygame.draw.rect(bullet,black,(0, 0, 10, 4))
         

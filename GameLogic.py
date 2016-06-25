@@ -18,15 +18,18 @@ class Score:
 
 class enemy1():
     def __init__(self):
-        self.img= GLib.enemy1
+        self.enemyAnim = [GLib.enemy1,GLib.enemy2]
+        self.img = GLib.enemy1
         self.lives=1
         self.x = 1225
         self.vx = -1
-        self.y=EnemyPositionList[random.randint(5,len(EnemyPositionList)-1)]
-    
+        self.y=EnemyPositionList[random.randint(0,len(EnemyPositionList)-1)]
+        self.t =0
     def update(self):
         self.x += self.vx
-        
+        self.img = self.enemyAnim[(self.t // 2 )% 2] 
+        self.t = self.t + 1
+    
         
 class Bullet:
 # self.sprite.x , self.sprite.y
@@ -127,6 +130,7 @@ class Game:
                     if hasCollideRect(i, e):
                         self.bulletList.remove(i)
                         self.enemyList.remove(e)
+                        break
 
             if state == "Normal":
                 showAnimationOn(self.sprite, self.sprite.MovementDetection(), self.timer )
