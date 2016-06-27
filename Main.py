@@ -25,7 +25,7 @@ from GameLogic import *
 game = Game()
 
 # Let state1 be the initial state
-state = "StartScreen"
+state = "Startscreen2"
 
 #-------------------------
 # Our Main Loop
@@ -75,10 +75,25 @@ while True:
             if event.key == pygame.K_SPACE:
                 state = "Normal"
         if event.type== pygame.MOUSEBUTTONDOWN:
+            print(event)
             x, y = event.pos
-            if state == "StartScreen":
-                game.objectsOnScreen = [game.enemyList, game.bulletList, game.score, game.sprite]
-                state="Normal"
+            if state == "Startscreen2":
+                game.objectsOnScreen = []
+                state= "Startscreen3"
+            elif state == "Startscreen3":
+                game.objectsOnScreen = []
+                state="Startscreen4"
+            elif state == "Startscreen4":
+                game.objectsOnScreen = []
+                state="Startscreen"
+            elif state == "Startscreen":
+                game.objectsOnScreen = [game.enemyList, game.bulletList, game.score]
+                state= "Normal"
+            print(state)
+            
+                
+
+            
 
 
 
