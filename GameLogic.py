@@ -10,12 +10,18 @@ class Score:
     def __init__(self):
         self.update(0)
         self.x = 1095
-        self.y=5
+        self.y = 5
         
     def update(self,scoreNum):
         myfont=pygame.font.SysFont('Calibri',40,bold=True)
         self.img=myfont.render(str(scoreNum),1,GLib.RED)
 
+#class Life:
+ #   def _init_(self):
+  #      self.img = GLib.Lives
+   #     self.update(0)
+    #    Life
+        
 class Ammo:
     def __init__(self):
         self.update(20)
@@ -23,14 +29,13 @@ class Ammo:
         self.y=5
         
     def update(self,bulletNum):
-        myfont=pygame.font.SysFont('Calibri',40,bold=True)
+        myfont=pygame.font.SysFont('Calibri',20,bold=True)
         self.img=myfont.render("Ammo:"+str(bulletNum),1,GLib.BLACK)
 
 class enemy1():
     def __init__(self):
         self.enemyAnim = [GLib.enemyF,GLib.enemy2]
         self.img = GLib.enemyF
-        self.lives=1
         self.x = 1225
         self.vx = -1
         self.y=EnemyPositionList[random.randint(0,len(EnemyPositionList)-1)]
@@ -66,7 +71,7 @@ class Sprite:
         # TODO: add more properties to Sprite based on your game
         self.vx = 0
         self.vy = 0
-        self.lives=10
+        self.lives=3
         self.bullets=20
     
 
@@ -85,11 +90,7 @@ class Sprite:
                     
 
 # the minimum class for an object that can be displaced on the screen
-class Ball:
-    def __init__(self, x, y, img):
-        self.x = x
-        self.y = y
-        self.img = img
+
 
 
 class Game:
@@ -102,6 +103,7 @@ class Game:
         self.score = Score()
         self.ammo=Ammo()
         self.LastBulletShot=0
+        self.reloadTimer=0
         # self.ball = Ball(250, 250, GLib.ballSpriteBLUE)
         # TODO: add any variables you think will be needed as a property of Game
         # ...
@@ -111,10 +113,12 @@ class Game:
         # Make sure that all of those objects has x, y and img defined as their property
         
 
+
         #self.objectsOnScreen = [self.enemyList, self.bulletList, self.score, self.ammo, self.sprite]
         self.objectsOnScreen = []
 
     
+
 
     def shoot(self):
 
@@ -150,6 +154,8 @@ class Game:
                    self.bulletList.remove(i)
             self.score.update(self.timer//SECSPERPOINT)
             self.ammo.update(self.sprite.bullets)
+            if self.reloadTimer==self.timer:
+                self.sprite.bullets=20
             
             for i in self.bulletList:
                 for e in self.enemyList:
@@ -195,6 +201,7 @@ class Game:
             # you can replace the next line                     
         if state == "Normal":
             screen.blit(GLib.Realbackground, (-25, -15))
+            screen.blit(GLib.Lives,(100,5))
         elif state == "Startscreen2":
             screen.blit(GLib.Startscreen2,(0,0))
         elif state == "Startscreen3":
