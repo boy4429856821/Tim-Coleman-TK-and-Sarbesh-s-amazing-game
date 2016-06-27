@@ -98,6 +98,7 @@ class Game:
         self.LastBulletShot=0
         self.reloadTimer=0
         self.Lives= 5
+        self.LivesL= [1,2,3,4,5]
         # self.ball = Ball(250, 250, GLib.ballSpriteBLUE)
         # TODO: add any variables you think will be needed as a property of Game
         # ...
@@ -137,10 +138,12 @@ class Game:
             if self.timer % 10 == 0:
                 e=enemy1()
                 self.enemyList.append(e)
-            for e in self.enemyList:
+            for e in self.enemyList: 
                 e.update()
                 if e.x<=-50:
                     self.enemyList.remove(e)
+                    self.Lives -= 1
+
             for i in self.bulletList:
                 i.update()
                 if i.x>=1200:
