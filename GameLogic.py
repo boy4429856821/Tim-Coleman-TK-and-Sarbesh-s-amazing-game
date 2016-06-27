@@ -110,9 +110,14 @@ class Game:
         # TODO: add any objects that you would like to be drawn on the screen
         # Make sure that all of those objects has x, y and img defined as their property
         
+<<<<<<< HEAD
         #self.objectsOnScreen = [self.enemyList, self.bulletList, self.score, self.ammo, self.sprite]
         self.objectsOnScreen = []
 
+=======
+
+        self.objectsOnScreen = []
+>>>>>>> origin/master
     
 
     def shoot(self):
