@@ -19,6 +19,7 @@ shotsFired = pygame.image.load('swatshootingcycle2.png')
 shotsFired = pygame.transform.scale(shotsFired,(70,75))
 shotsFired.set_alpha()
 shotsFired.set_colorkey(WHITE)
+ShootingSprite =[character1,shotsFired]
 
 
 #background = pygame.image.load('action cycle 3.jpg')
@@ -28,13 +29,17 @@ Realbackground= pygame.transform.scale(Realbackground,(1250,800))
 characterAnimationL = [character1,character2]
 Startscreen = pygame.image.load("ChocoBible.png")
 Startscreen = pygame.transform.scale(Startscreen,(1250,800))
-ShootingSprite = [character1,shotsFired]
+Startscreen2 = pygame.image.load("ChocoPages.png")
+Startscreen2 = pygame.transform.scale(Startscreen2, (1250 ,800))
+CopyRight = pygame.image.load("ChocoCopyright.png")
+CopyRight = pygame.transform.scale(CopyRight,(1250 ,(800)))
 
 
-enemy1 = pygame.image.load('dinoVillan1.png')
-enemy1= pygame.transform.scale(enemy1,(60,50))
-enemy1.set_colorkey(WHITE)
-enemy1.set_alpha()
+
+enemyF= pygame.image.load('dinoVillan1.png')
+enemyF= pygame.transform.scale(enemyF,(60,50))
+enemyF.set_colorkey(WHITE)
+enemyF.set_alpha()
 enemy2 = pygame.image.load('dinoVillan2.png')
 enemy2= pygame.transform.scale(enemy2,(60,50))
 enemy2.set_colorkey(WHITE)
