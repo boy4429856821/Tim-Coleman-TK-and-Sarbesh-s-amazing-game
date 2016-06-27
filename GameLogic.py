@@ -8,7 +8,7 @@ EnemyPositionList=[50,100,150,200,250,300,350,400,450,500,550,600]
 # a great example of an object that can move on the screen
 class Score:
     def __init__(self):
-        self.img= GLib.enemy1
+        self.img= GLib.enemyF
         self.x = 1150
         self.y=5
         
@@ -18,8 +18,8 @@ class Score:
 
 class enemy1():
     def __init__(self):
-        self.enemyAnim = [GLib.enemy1,GLib.enemy2]
-        self.img = GLib.enemy1
+        self.enemyAnim = [GLib.enemyF,GLib.enemy2]
+        self.img = GLib.enemyF
         self.lives=1
         self.x = 1225
         self.vx = -1
