@@ -15,7 +15,12 @@ class Score:
     def update(self,scoreNum):
         myfont=pygame.font.SysFont('Calibri',40,bold=True)
         self.img=myfont.render(str(scoreNum),1,GLib.RED)
+<<<<<<< HEAD
            
+=======
+        
+        
+>>>>>>> origin/master
 class Ammo:
     def __init__(self):
         self.update(20)
@@ -48,7 +53,7 @@ class Bullet:
         self.img=GLib.bullet
         
     def update(self):
-        self.x += 25
+        self.x += 35
         
 class Sprite:
     def __init__(self):
@@ -65,7 +70,7 @@ class Sprite:
         # TODO: add more properties to Sprite based on your game
         self.vx = 0
         self.vy = 0
-        self.lives=3
+        self.lives=5
         self.bullets=20
     
 
@@ -144,14 +149,12 @@ class Game:
                     self.enemyList.remove(e)
             for i in self.bulletList:
                 i.update()
-            
                 if i.x>=1200:
                    self.bulletList.remove(i)
             self.score.update(self.timer//SECSPERPOINT)
             self.ammo.update(self.sprite.bullets)
             if self.reloadTimer==self.timer:
                 self.sprite.bullets=20
-            
             for i in self.bulletList:
                 for e in self.enemyList:
                     if hasCollideRect(i, e):
