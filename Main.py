@@ -50,11 +50,8 @@ while True:
                 game.sprite.x += -13  
               
             if event.key == pygame.K_r:
-
                 if game.sprite.bullets<6:
                     game.sprite.bullets=20
-
-                game.sprite.bullets=13
 
             if event.key == pygame.K_RIGHT:
                 game.sprite.x += 13
@@ -92,7 +89,7 @@ while True:
                 game.objectsOnScreen = []
                 state="Startscreen"
             elif state == "Startscreen":
-                game.objectsOnScreen = [game.enemyList, game.bulletList, game.score, game.sprite]
+                game.objectsOnScreen = [game.enemyList, game.bulletList, game.score, game.ammo, game.sprite]
                 state= "Normal"
             print(state)
             
