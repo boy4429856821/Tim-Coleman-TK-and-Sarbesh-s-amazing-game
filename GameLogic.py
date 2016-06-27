@@ -10,7 +10,7 @@ class Score:
     def __init__(self):
         self.update(0)
         self.x = 1095
-        self.y=5
+        self.y = 5
         
     def update(self,scoreNum):
         myfont=pygame.font.SysFont('Calibri',40,bold=True)
@@ -19,13 +19,9 @@ class Score:
 #class Life:
  #   def _init_(self):
   #      self.img = GLib.Lives
-   # def drawLives(self,x,y):
-    #    LivesL=[]
-     #   self.x = x
-      #  self.y = y
-       # self.img.load ()
-
-
+   #     self.update(0)
+    #    Life
+        
 class Ammo:
     def __init__(self):
         self.update(20)
@@ -94,11 +90,7 @@ class Sprite:
                     
 
 # the minimum class for an object that can be displaced on the screen
-class Ball:
-    def __init__(self, x, y, img):
-        self.x = x
-        self.y = y
-        self.img = img
+
 
 
 class Game:

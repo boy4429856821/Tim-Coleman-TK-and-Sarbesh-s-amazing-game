@@ -47,10 +47,10 @@ while True:
         # TODO: replace the reset with your designed input
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                game.sprite.x += -13  
+                game.sprite.x += -20  
               
             if event.key == pygame.K_r:
-                game.sprite.bullets=13
+                game.sprite.bullets=20
 
                 if game.sprite.bullets<6:
                     game.reloadTimer=game.timer+50
