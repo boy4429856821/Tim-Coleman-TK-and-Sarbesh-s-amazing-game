@@ -50,13 +50,8 @@ while True:
                 game.sprite.x += -13  
               
             if event.key == pygame.K_r:
-<<<<<<< HEAD
-                game.sprite.bullets=13
-=======
-                if game.sprite.bullets<6:
-                    game.reloadTimer=game.timer+50
+                game.reloadTimer=game.timer+50
 
->>>>>>> origin/master
             if event.key == pygame.K_RIGHT:
                 game.sprite.x += 13
                 
@@ -93,16 +88,12 @@ while True:
                 game.objectsOnScreen = []
                 state ="Startscreen"
             elif state == "Startscreen":
-<<<<<<< HEAD
-                 game.objectsOnScreen = []
-                 state = "ControlScreen"
-=======
 
                 game.objectsOnScreen = [game.enemyList, game.bulletList, game.score, game.ammo, game.sprite]
                 state= "Normal"
                 game.objectsOnScreen = []
                 state= "ControlScreen"
->>>>>>> origin/master
+
             elif state =="ControlScreen":
                  game.objectsOnScreen = [game.enemyList, game.bulletList, game.score,game.ammo, game.sprite]
                  state = "Normal"
