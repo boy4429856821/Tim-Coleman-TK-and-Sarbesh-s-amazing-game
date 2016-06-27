@@ -102,6 +102,7 @@ class Game:
         self.score = Score()
         self.ammo=Ammo()
         self.LastBulletShot=0
+        self.reloadTimer=0
         # self.ball = Ball(250, 250, GLib.ballSpriteBLUE)
         # TODO: add any variables you think will be needed as a property of Game
         # ...
@@ -154,6 +155,8 @@ class Game:
                    self.bulletList.remove(i)
             self.score.update(self.timer//SECSPERPOINT)
             self.ammo.update(self.sprite.bullets)
+            if self.reloadTimer==self.timer:
+                self.sprite.bullets=20
             
             for i in self.bulletList:
                 for e in self.enemyList:

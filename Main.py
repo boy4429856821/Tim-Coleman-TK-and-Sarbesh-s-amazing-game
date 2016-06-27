@@ -54,7 +54,7 @@ while True:
                 game.sprite.bullets=13
 =======
                 if game.sprite.bullets<6:
-                    game.sprite.bullets=20
+                    game.reloadTimer=game.timer+50
 
 >>>>>>> origin/master
             if event.key == pygame.K_RIGHT:
