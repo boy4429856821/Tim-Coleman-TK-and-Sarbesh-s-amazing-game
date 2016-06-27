@@ -39,7 +39,9 @@ ControlScreen = pygame.image.load("ControlScreen.png")
 ControlScreen = pygame.transform.scale(ControlScreen, (1250,700))
 ShootingSprite = [character1,shotsFired]
 
-
+Lives = pygame.image.load("Hearts.png")
+Lives = pygame.transform.scale(Lives, (25,25))
+Lives.set_colorkey(WHITE)
 
 enemyF= pygame.image.load('dinoVillan1.png')
 enemyF= pygame.transform.scale(enemyF,(60,50))
