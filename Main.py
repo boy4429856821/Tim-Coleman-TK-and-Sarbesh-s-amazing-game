@@ -89,8 +89,16 @@ while True:
                 game.objectsOnScreen = []
                 state="Startscreen"
             elif state == "Startscreen":
+<<<<<<< HEAD
                 game.objectsOnScreen = [game.enemyList, game.bulletList, game.score, game.ammo, game.sprite]
                 state= "Normal"
+=======
+                 game.objectsOnScreen = []
+                 state= "ControlScreen"
+            elif state =="ControlScreen":
+                 game.objectsOnScreen = [game.enemyList, game.bulletList, game.score, game.sprite]
+                 state = "Normal"
+>>>>>>> origin/master
             print(state)
             
 

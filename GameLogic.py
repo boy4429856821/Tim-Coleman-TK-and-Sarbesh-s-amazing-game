@@ -169,6 +169,8 @@ class Game:
             pass
         elif state == "Startscreen":
             pass
+        elif state == "ControlScreen":
+            pass
             
         
         
@@ -195,11 +197,12 @@ class Game:
             screen.blit(GLib.Startscreen2,(0,0))
         elif state == "Startscreen3":
             screen.blit(GLib.Startscreen3,(0,0))
-
         elif state == "Startscreen4":
             screen.blit(GLib.Startscreen4,(0,0))
         elif state == "Startscreen":
             screen.blit(GLib.Startscreen,(0,0))
+        elif state == "ControlScreen":
+            screen.blit(GLib.ControlScreen,(0,0))
         if state == "Attack":
             screen.blit(GLib.Realbackground,(-25,-15))
         

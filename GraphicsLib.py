@@ -35,6 +35,8 @@ Startscreen3 = pygame.image.load("ChocoPages.png")
 Startscreen3 = pygame.transform.scale(Startscreen3,(1250,700))
 Startscreen4 = pygame.image.load("ChocoCopyRight.png")
 Startscreen4 = pygame.transform.scale(Startscreen4,(1250,700))
+ControlScreen = pygame.image.load("ControlScreen.png")
+ControlScreen = pygame.transform.scale(ControlScreen, (1250,700))
 ShootingSprite = [character1,shotsFired]
 
 
