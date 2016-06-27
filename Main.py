@@ -50,12 +50,12 @@ while True:
                 game.sprite.x += -13  
               
             if event.key == pygame.K_r:
-<<<<<<< HEAD
+
                 if game.sprite.bullets<6:
                     game.sprite.bullets=20
-=======
+
                 game.sprite.bullets=13
->>>>>>> origin/master
+
             if event.key == pygame.K_RIGHT:
                 game.sprite.x += 13
                 
