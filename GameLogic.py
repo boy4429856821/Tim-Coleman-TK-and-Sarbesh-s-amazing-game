@@ -49,7 +49,7 @@ class Bullet:
         self.img=GLib.bullet
         
     def update(self):
-        self.x += 25
+        self.x += 35
         
 class Sprite:
     def __init__(self):
@@ -135,7 +135,7 @@ class Game:
         # check what state the game is at
         if state == "Normal" or state == "Attack":
             self.timer += 1
-            if self.timer % 10 == 0:
+            if self.timer % 100 == 0:
                 e=enemy1()
                 self.enemyList.append(e)
             for e in self.enemyList:
@@ -174,7 +174,6 @@ class Game:
             pass
         elif state == "ControlScreen":
             pass
-            
         
         
         else:

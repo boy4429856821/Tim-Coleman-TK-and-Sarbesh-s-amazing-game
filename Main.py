@@ -55,6 +55,7 @@ while True:
             if event.key == pygame.K_RIGHT:
                 game.sprite.x += 13
                 
+                
                 #state = "MovingLeft"            
             if event.key == pygame.K_UP:
                 game.sprite.y += -13
