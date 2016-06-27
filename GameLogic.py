@@ -15,13 +15,7 @@ class Score:
     def update(self,scoreNum):
         myfont=pygame.font.SysFont('Calibri',40,bold=True)
         self.img=myfont.render(str(scoreNum),1,GLib.RED)
-
-#class Life:
- #   def _init_(self):
-  #      self.img = GLib.Lives
-   #     self.update(0)
-    #    Life
-        
+           
 class Ammo:
     def __init__(self):
         self.update(20)
@@ -104,6 +98,7 @@ class Game:
         self.ammo=Ammo()
         self.LastBulletShot=0
         self.reloadTimer=0
+        self.Lives= 5
         # self.ball = Ball(250, 250, GLib.ballSpriteBLUE)
         # TODO: add any variables you think will be needed as a property of Game
         # ...
@@ -163,7 +158,12 @@ class Game:
                         self.bulletList.remove(i)
                         self.enemyList.remove(e)
                         break
-
+            for e in self.enemyList:
+                if hasCollideRect(self.sprite, e):
+                    self.Lives -= 1
+            if self.Lives == 0:
+                self.objectsOnScreen =[]
+                return "Died"
             if state == "Normal":
                 showAnimationOn(self.sprite, self.sprite.MovementDetection(), self.timer )
             else:
@@ -178,6 +178,8 @@ class Game:
         elif state == "Startscreen":
             pass
         elif state == "ControlScreen":
+            pass
+        elif state == "Died":
             pass
             
         
@@ -202,6 +204,9 @@ class Game:
         if state == "Normal":
             screen.blit(GLib.Realbackground, (-25, -15))
             screen.blit(GLib.Lives,(100,5))
+            myfont=pygame.font.SysFont('Calibri',20,bold=True)
+            img=myfont.render(str(self.Lives),1,GLib.WHITE)
+            screen.blit(img,(100,5))
         elif state == "Startscreen2":
             screen.blit(GLib.Startscreen2,(0,0))
         elif state == "Startscreen3":
@@ -214,6 +219,8 @@ class Game:
             screen.blit(GLib.ControlScreen,(0,0))
         if state == "Attack":
             screen.blit(GLib.Realbackground,(-25,-15))
+        if state == "Died":
+            screen.fill(GLib.BLACK)
         
 
 

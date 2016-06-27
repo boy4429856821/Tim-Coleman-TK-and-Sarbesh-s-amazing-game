@@ -73,14 +73,16 @@ while True:
             if event.key == pygame.K_LEFT:
                 game.sprite.x += 0
             if event.key == pygame.K_RIGHT:
-                state = "Normal"
+                if state != "Died":
+                    state = "Normal"
                 game.sprite.x += 0
             if event.key == pygame.K_UP:
                 game.sprite.y += 0
             if event.key == pygame.K_DOWN:
                 game.sprite.y += 0
             if event.key == pygame.K_SPACE:
-                state = "Normal"
+                if state != "Died":
+                    state = "Normal"
         if event.type== pygame.MOUSEBUTTONDOWN:
             x, y = event.pos
             if state == "Startscreen2":
