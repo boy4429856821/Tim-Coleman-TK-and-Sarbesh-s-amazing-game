@@ -50,12 +50,7 @@ while True:
                 game.sprite.x += -13  
               
             if event.key == pygame.K_r:
-<<<<<<< HEAD
-                if game.sprite.bullets<6:
-                    game.sprite.bullets=20
-=======
                 game.sprite.bullets=13
->>>>>>> origin/master
             if event.key == pygame.K_RIGHT:
                 game.sprite.x += 13
                 
@@ -84,16 +79,16 @@ while True:
             x, y = event.pos
             if state == "Startscreen2":
                 game.objectsOnScreen = []
-                state= "Startscreen3"
+                state=  "Startscreen3"
             elif state == "Startscreen3":
                 game.objectsOnScreen = []
-                state="Startscreen4"
+                state  ="Startscreen4"
             elif state == "Startscreen4":
                 game.objectsOnScreen = []
-                state="Startscreen"
+                state ="Startscreen"
             elif state == "Startscreen":
                  game.objectsOnScreen = []
-                 state= "ControlScreen"
+                 state = "ControlScreen"
             elif state =="ControlScreen":
                  game.objectsOnScreen = [game.enemyList, game.bulletList, game.score, game.sprite]
                  state = "Normal"
