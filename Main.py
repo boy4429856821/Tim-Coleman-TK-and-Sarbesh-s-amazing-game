@@ -47,7 +47,7 @@ while True:
         # TODO: replace the reset with your designed input
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                game.sprite.x += -20  
+                game.sprite.x += -13
               
             if event.key == pygame.K_r:
                 game.sprite.bullets=13
