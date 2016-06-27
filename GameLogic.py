@@ -15,12 +15,6 @@ class Score:
     def update(self,scoreNum):
         myfont=pygame.font.SysFont('Calibri',40,bold=True)
         self.img=myfont.render(str(scoreNum),1,GLib.RED)
-<<<<<<< HEAD
-           
-=======
-        
-        
->>>>>>> origin/master
 class Ammo:
     def __init__(self):
         self.update(20)
@@ -163,9 +157,11 @@ class Game:
                         break
             for e in self.enemyList:
                 if hasCollideRect(self.sprite, e):
+                    self.enemyList.remove(e)
                     self.Lives -= 1
             if self.Lives == 0:
                 self.objectsOnScreen =[]
+            
                 return "Died"
             if state == "Normal":
                 showAnimationOn(self.sprite, self.sprite.MovementDetection(), self.timer )
@@ -209,7 +205,7 @@ class Game:
             screen.blit(GLib.Lives,(100,5))
             myfont=pygame.font.SysFont('Calibri',20,bold=True)
             img=myfont.render(str(self.Lives),1,GLib.WHITE)
-            screen.blit(img,(100,5))
+            screen.blit(img,(110,10))
         elif state == "Startscreen2":
             screen.blit(GLib.Startscreen2,(0,0))
         elif state == "Startscreen3":
