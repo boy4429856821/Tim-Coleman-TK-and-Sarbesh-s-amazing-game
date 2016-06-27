@@ -100,7 +100,7 @@ class Game:
         # TODO: add any objects that you would like to be drawn on the screen
         # Make sure that all of those objects has x, y and img defined as their property
         
-        self.objectsOnScreen = [self.enemyList, self.bulletList, self.score, self.sprite]
+        self.objectsOnScreen = []
     
 
     def shoot(self):
@@ -148,8 +148,17 @@ class Game:
             else:
                 showAnimationOn(self.sprite, GLib.ShootingSprite, self.timer/2)
             self.sprite.update()
-        elif state == "StartScreen":
+        elif state == "Startscreen2":
             pass
+        elif state == "Startscreen3":
+            pass
+        elif state == "Startscreen4":
+            pass
+        elif state == "Startscreen":
+            pass
+            
+        
+        
         else:
             print("Undefined game state " + str(state))
             exit()
@@ -169,6 +178,15 @@ class Game:
             # you can replace the next line                     
         if state == "Normal":
             screen.blit(GLib.Realbackground, (-25, -15))
+        elif state == "Startscreen2":
+            screen.blit(GLib.Startscreen2,(0,0))
+        elif state == "Startscreen3":
+            screen.blit(GLib.Startscreen3,(0,0))
+
+        elif state == "Startscreen4":
+            screen.blit(GLib.Startscreen4,(0,0))
+        elif state == "Startscreen":
+            screen.blit(GLib.Startscreen,(0,0))
         if state == "Attack":
             screen.blit(GLib.Realbackground,(-25,-15))
         
