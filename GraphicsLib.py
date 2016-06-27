@@ -27,12 +27,15 @@ ShootingSprite =[character1,shotsFired]
 Realbackground = pygame.image.load('Mbackground.png')
 Realbackground= pygame.transform.scale(Realbackground,(1250,800))
 characterAnimationL = [character1,character2]
-Startscreen = pygame.image.load("ChocoBible.png")
-Startscreen = pygame.transform.scale(Startscreen,(1250,800))
-Startscreen2 = pygame.image.load("ChocoPages.png")
-Startscreen2 = pygame.transform.scale(Startscreen2, (1250 ,800))
-CopyRight = pygame.image.load("ChocoCopyright.png")
-CopyRight = pygame.transform.scale(CopyRight,(1250 ,(800)))
+Startscreen = pygame.image.load("starting pic.png")
+Startscreen = pygame.transform.scale(Startscreen,(1250,700))
+Startscreen2 = pygame.image.load("ChocoBible.png")
+Startscreen2 = pygame.transform.scale(Startscreen2,(1250,800))
+Startscreen3 = pygame.image.load("ChocoPages.png")
+Startscreen3 = pygame.transform.scale(Startscreen3,(1250,700))
+Startscreen4 = pygame.image.load("ChocoCopyRight.png")
+Startscreen4 = pygame.transform.scale(Startscreen4,(1250,700))
+ShootingSprite = [character1,shotsFired]
 
 
 

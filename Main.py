@@ -25,7 +25,7 @@ from GameLogic import *
 game = Game()
 
 # Let state1 be the initial state
-state = "StartScreen"
+state = "Startscreen2"
 
 #-------------------------
 # Our Main Loop
@@ -47,19 +47,23 @@ while True:
         # TODO: replace the reset with your designed input
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                game.sprite.x += -8  
+                game.sprite.x += -13  
               
             if event.key == pygame.K_r:
+<<<<<<< HEAD
                 if game.sprite.bullets<6:
                     game.sprite.bullets=20
+=======
+                game.sprite.bullets=13
+>>>>>>> origin/master
             if event.key == pygame.K_RIGHT:
-                game.sprite.x += 8
+                game.sprite.x += 13
                 
                 #state = "MovingLeft"            
             if event.key == pygame.K_UP:
-                game.sprite.y += -8
+                game.sprite.y += -13
             if event.key == pygame.K_DOWN:
-                game.sprite.y += 8
+                game.sprite.y += 13
             if event.key == pygame.K_SPACE:
                 state = "Attack"
                 game.shoot()
@@ -78,9 +82,22 @@ while True:
                 state = "Normal"
         if event.type== pygame.MOUSEBUTTONDOWN:
             x, y = event.pos
-            if state == "StartScreen":
-                state="Normal"
-                game=Game()
+            if state == "Startscreen2":
+                game.objectsOnScreen = []
+                state= "Startscreen3"
+            elif state == "Startscreen3":
+                game.objectsOnScreen = []
+                state="Startscreen4"
+            elif state == "Startscreen4":
+                game.objectsOnScreen = []
+                state="Startscreen"
+            elif state == "Startscreen":
+                game.objectsOnScreen = [game.enemyList, game.bulletList, game.score, game.sprite]
+                state= "Normal"
+            print(state)
+            
+
+            
 
 
 
