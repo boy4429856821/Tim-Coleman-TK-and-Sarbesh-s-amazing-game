@@ -112,9 +112,10 @@ class Game:
         # the last added object is going to be on the top
     def updateInState(self, state):
         # increment the timer
-        self.timer += 1
+        
         # check what state the game is at
         if state == "Normal" or state == "Attack":
+            self.timer += 1
             if self.timer % 10 == 0:
                 e=enemy1()
                 self.enemyList.append(e)
@@ -124,7 +125,11 @@ class Game:
                     self.enemyList.remove(e)
             for i in self.bulletList:
                 i.update()
-            self.score.update(self.timer//18)
+            
+                if i.x>=1200:
+                   self.bulletList.remove(i)
+                self.score.update(self.timer//18)
+
             for i in self.bulletList:
                 for e in self.enemyList:
                     if hasCollideRect(i, e):
