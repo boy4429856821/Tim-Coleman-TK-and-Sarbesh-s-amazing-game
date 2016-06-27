@@ -2,13 +2,13 @@ import pygame
 import GraphicsLib as GLib
 from Util import *
 import random
-
+SECSPERPOINT=18
 
 EnemyPositionList=[50,100,150,200,250,300,350,400,450,500,550,600]
 # a great example of an object that can move on the screen
 class Score:
     def __init__(self):
-        self.img= GLib.enemyF
+        self.update(0)
         self.x = 1095
         self.y=5
         
@@ -58,7 +58,7 @@ class Sprite:
         self.vx = 0
         self.vy = 0
         self.lives=10
-    
+        self.bullets=20
     
 
     # an example of updating position of the object
@@ -91,6 +91,7 @@ class Game:
         self.enemyList = []
         self.bulletList=[]
         self.score = Score()
+        self.LastBulletShot=0
         # self.ball = Ball(250, 250, GLib.ballSpriteBLUE)
         # TODO: add any variables you think will be needed as a property of Game
         # ...
@@ -98,11 +99,16 @@ class Game:
         # .
         # TODO: add any objects that you would like to be drawn on the screen
         # Make sure that all of those objects has x, y and img defined as their property
-        self.objectsOnScreen = []
+        
+        self.objectsOnScreen = [self.enemyList, self.bulletList, self.score, self.sprite]
     
 
     def shoot(self):
-        self.bulletList.append( Bullet(self.sprite.x , self.sprite.y ))
+
+        if self.timer-self.LastBulletShot>10 and self.sprite.bullets>0:
+            self.bulletList.append(Bullet(self.sprite.x , self.sprite.y ))
+            self.LastBulletShot=self.timer
+            self.sprite.bullets-=1
     # Try to update all the elements
     # if you want to add another to the screen:                 self.objectsOnScreen.add(x)
     # if you want to remove a object from the screen:           self.objectsOnScreen.remove(x)
@@ -128,7 +134,7 @@ class Game:
             
                 if i.x>=1200:
                    self.bulletList.remove(i)
-                self.score.update(self.timer//18)
+            self.score.update(self.timer//SECSPERPOINT)
 
             for i in self.bulletList:
                 for e in self.enemyList:
@@ -163,8 +169,6 @@ class Game:
             # you can replace the next line                     
         if state == "Normal":
             screen.blit(GLib.Realbackground, (-25, -15))
-        elif state == "StartScreen":
-            screen.blit(GLib.Startscreen,(0,0))
         if state == "Attack":
             screen.blit(GLib.Realbackground,(-25,-15))
         
@@ -176,11 +180,5 @@ class Game:
                     screen.blit(i.img, (i.x, i.y))
             else:
                 screen.blit(obj.img, (obj.x, obj.y))
-                    
-
-        for obj in self.objectsOnScreen:
-            if type(obj) is list:
-                for i in obj:
-                    screen.blit(i.img, (i.x, i.y))
-            else:
-                screen.blit(obj.img, (obj.x, obj.y))
+        if state == "StartScreen":
+            screen.blit(GLib.Startscreen,(0,0))

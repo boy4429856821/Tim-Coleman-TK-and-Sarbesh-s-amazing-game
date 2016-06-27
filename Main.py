@@ -49,7 +49,8 @@ while True:
             if event.key == pygame.K_LEFT:
                 game.sprite.x += -8  
               
-
+            if event.key == pygame.K_r:
+                game.sprite.bullets=20
             if event.key == pygame.K_RIGHT:
                 game.sprite.x += 8
                 
@@ -77,8 +78,8 @@ while True:
         if event.type== pygame.MOUSEBUTTONDOWN:
             x, y = event.pos
             if state == "StartScreen":
-                game.objectsOnScreen = [game.enemyList, game.bulletList, game.score, game.sprite]
                 state="Normal"
+                game=Game()
 
 
 
