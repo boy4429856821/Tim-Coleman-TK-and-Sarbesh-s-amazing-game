@@ -12,9 +12,19 @@ class Score:
         self.x = 1095
         self.y=5
         
-    def update(self, scoreNum):
+    def update(self,scoreNum):
         myfont=pygame.font.SysFont('Calibri',40,bold=True)
         self.img=myfont.render(str(scoreNum),1,GLib.RED)
+
+class Ammo:
+    def __init__(self):
+        self.update(20)
+        self.x=10
+        self.y=5
+        
+    def update(self,bulletNum):
+        myfont=pygame.font.SysFont('Calibri',40,bold=True)
+        self.img=myfont.render("Ammo:"+str(bulletNum),1,GLib.BLACK)
 
 class enemy1():
     def __init__(self):
@@ -38,7 +48,6 @@ class Bullet:
         self.y=y+19
         self.img=GLib.bullet
         
- 
     def update(self):
         self.x += 25
         
@@ -91,6 +100,7 @@ class Game:
         self.enemyList = []
         self.bulletList=[]
         self.score = Score()
+        self.ammo=Ammo()
         self.LastBulletShot=0
         # self.ball = Ball(250, 250, GLib.ballSpriteBLUE)
         # TODO: add any variables you think will be needed as a property of Game
@@ -100,7 +110,7 @@ class Game:
         # TODO: add any objects that you would like to be drawn on the screen
         # Make sure that all of those objects has x, y and img defined as their property
         
-        self.objectsOnScreen = [self.enemyList, self.bulletList, self.score, self.sprite]
+        self.objectsOnScreen = [self.enemyList, self.bulletList, self.score, self.ammo, self.sprite]
     
 
     def shoot(self):
@@ -109,6 +119,7 @@ class Game:
             self.bulletList.append(Bullet(self.sprite.x , self.sprite.y ))
             self.LastBulletShot=self.timer
             self.sprite.bullets-=1
+
     # Try to update all the elements
     # if you want to add another to the screen:                 self.objectsOnScreen.add(x)
     # if you want to remove a object from the screen:           self.objectsOnScreen.remove(x)
@@ -135,7 +146,8 @@ class Game:
                 if i.x>=1200:
                    self.bulletList.remove(i)
             self.score.update(self.timer//SECSPERPOINT)
-
+            self.ammo.update(self.sprite.bullets)
+            
             for i in self.bulletList:
                 for e in self.enemyList:
                     if hasCollideRect(i, e):

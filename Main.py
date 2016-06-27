@@ -50,7 +50,8 @@ while True:
                 game.sprite.x += -8  
               
             if event.key == pygame.K_r:
-                game.sprite.bullets=20
+                if game.sprite.bullets<6:
+                    game.sprite.bullets=20
             if event.key == pygame.K_RIGHT:
                 game.sprite.x += 8
                 
