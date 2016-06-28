@@ -15,6 +15,7 @@ class Score:
     def update(self,scoreNum):
         myfont=pygame.font.SysFont('Calibri',40,bold=True)
         self.img=myfont.render(str(scoreNum),1,GLib.RED)
+        
 class Ammo:
     def __init__(self):
         self.update(20)
@@ -37,7 +38,7 @@ class enemy1():
         self.x += self.vx
         self.img = self.enemyAnim[(self.t // 2 )% 2] 
         self.t = self.t + 1
-    
+        
         
 class Bullet:
 # self.sprite.x , self.sprite.y
@@ -132,15 +133,32 @@ class Game:
         # check what state the game is at
         if state == "Normal" or state == "Attack":
             self.timer += 1
-            if self.timer % 100 == 0:
-                e=enemy1()
-                self.enemyList.append(e)
+            if self.timer > 0 and self.timer < 500:    
+                if self.timer % 100 == 0:
+                    e=enemy1()
+                    self.enemyList.append(e)
+            if self.timer > 499 and self.timer < 1000:
+                if self.timer % 90 == 0:
+                    e=enemy1()
+                    self.enemyList.append(e)
+            if self.timer > 999 and self.timer < 1500:
+                if self.timer % 80 == 0:
+                    e=enemy1()
+                    self.enemyList.append(e)
+            if self.timer > 1499 and self.timer < 2000:
+                if self.timer % 70 == 0:
+                    e=enemy1()
+                    self.enemyList.append(e)
+            if self.timer > 1999 and self.timer < 2500:
+                if self.timer % 60 == 0:
+                    e=enemy1()
+                    self.enemyList.append(e)        
             for e in self.enemyList: 
                 e.update()
                 if e.x<=-50:
                     self.enemyList.remove(e)
                     self.Lives -= 1
-
+                
             for i in self.bulletList:
                 i.update()
                 if i.x>=1200:
