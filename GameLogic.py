@@ -30,7 +30,7 @@ class enemy1():
         self.enemyAnim = [GLib.enemyF,GLib.enemy2]
         self.img = GLib.enemyF
         self.x = 1225
-        self.vx = -1
+        self.vx = -8
         self.y=EnemyPositionList[random.randint(0,len(EnemyPositionList)-1)]
         self.t =0
     def update(self):
