@@ -5,6 +5,7 @@ import pygame
 import pygame.mixer
 # initialize pygame
 pygame.init()
+pygame.mixer.init()
 
 # create a screen of 500 * 500
 # TODO: change the size of the screen to your design
@@ -64,6 +65,7 @@ while True:
             if event.key == pygame.K_SPACE:
                 state = "Attack"
                 game.shoot()
+                GLib.bulletSound.play()
                # game.objectsOnScreen = [game.sprite, game.enemyList]
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT:

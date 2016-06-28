@@ -39,6 +39,8 @@ ControlScreen = pygame.image.load("ControlScreen.png")
 ControlScreen = pygame.transform.scale(ControlScreen, (1250,700))
 ShootingSprite = [character1,shotsFired]
 
+bulletSound = pygame.mixer.Sound('BulletSound.wav')
+
 Lives = pygame.image.load("Hearts.png")
 Lives = pygame.transform.scale(Lives, (25,25))
 Lives.set_colorkey(WHITE)
