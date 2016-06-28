@@ -141,6 +141,10 @@ class Game:
                 if self.timer % 90 == 0:
                     e=enemy1()
                     self.enemyList.append(e)
+                if self.timer % 90 == 0:
+                    e=enemy1()
+                    self.enemyList.append(e)
+                    self.enemyList.append(e)
             if self.timer > 999 and self.timer < 1500:
                 if self.timer % 80 == 0:
                     e=enemy1()
