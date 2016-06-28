@@ -47,7 +47,7 @@ while True:
         # TODO: replace the reset with your designed input
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                game.sprite.x += -13  
+                game.sprite.x += -13
               
             if event.key == pygame.K_r:
                 game.reloadTimer=game.timer+50
@@ -69,14 +69,16 @@ while True:
             if event.key == pygame.K_LEFT:
                 game.sprite.x += 0
             if event.key == pygame.K_RIGHT:
-                state = "Normal"
+                if state != "Died":
+                    state = "Normal"
                 game.sprite.x += 0
             if event.key == pygame.K_UP:
                 game.sprite.y += 0
             if event.key == pygame.K_DOWN:
                 game.sprite.y += 0
             if event.key == pygame.K_SPACE:
-                state = "Normal"
+                if state != "Died":
+                    state = "Normal"
         if event.type== pygame.MOUSEBUTTONDOWN:
             x, y = event.pos
             if state == "Startscreen2":
@@ -90,16 +92,13 @@ while True:
                 state ="Startscreen"
             elif state == "Startscreen":
 
+
+                game.objectsOnScreen = []
+                state = "ControlScreen"
+            elif state == "ControlScreen":
+                state = "ControlScreen"
                 game.objectsOnScreen = [game.enemyList, game.bulletList, game.score, game.ammo, game.sprite]
                 state= "Normal"
-                game.objectsOnScreen = []
-                state= "ControlScreen"
-
-            elif state =="ControlScreen":
-                 game.objectsOnScreen = [game.enemyList, game.bulletList, game.score,game.ammo, game.sprite]
-                 state = "Normal"
-
-            print(state)
             
 
             
