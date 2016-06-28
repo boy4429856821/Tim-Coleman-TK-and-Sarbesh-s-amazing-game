@@ -47,20 +47,20 @@ while True:
         # TODO: replace the reset with your designed input
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                game.sprite.x += -13
+                game.sprite.x += -20
               
             if event.key == pygame.K_r:
                 game.reloadTimer=game.timer+50
 
             if event.key == pygame.K_RIGHT:
-                game.sprite.x += 13
+                game.sprite.x += 20
                 
                 
                 #state = "MovingLeft"            
             if event.key == pygame.K_UP:
-                game.sprite.y += -13
+                game.sprite.y += -20
             if event.key == pygame.K_DOWN:
-                game.sprite.y += 13
+                game.sprite.y += 20
             if event.key == pygame.K_SPACE:
                 state = "Attack"
                 game.shoot()
