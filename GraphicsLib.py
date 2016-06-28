@@ -38,6 +38,8 @@ Startscreen4 = pygame.transform.scale(Startscreen4,(1250,700))
 ControlScreen = pygame.image.load("ControlScreen.png")
 ControlScreen = pygame.transform.scale(ControlScreen, (1250,700))
 ShootingSprite = [character1,shotsFired]
+GameoverS = pygame.image.load("GameOverScreen.png")
+GameoverS = pygame.transform.scale(GameoverS,(1250,700))
 
 bulletSound = pygame.mixer.Sound('BulletSound.wav')
 

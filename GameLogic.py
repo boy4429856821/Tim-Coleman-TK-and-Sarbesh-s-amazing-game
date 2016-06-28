@@ -238,7 +238,7 @@ class Game:
         if state == "Attack":
             screen.blit(GLib.Realbackground,(-25,-15))
         if state == "Died":
-            screen.fill(GLib.BLACK)
+            screen.blit(GLib.GameoverS,(0,0))
         
 
 
