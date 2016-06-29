@@ -161,7 +161,7 @@ class Game:
         self.score = Score()
         self.ammo=Ammo()
         self.LastBulletShot=0
-        self.Lives=5
+        self.Lives=10
         self.EQlives=3
         self.damagetext = damagetaken()
         self.EWlives=3
@@ -246,12 +246,11 @@ class Game:
                     self.Lives -= 1
                     self.damagetext.update("Damage Taken!")
                     self.damageTimer=self.timer+300
-
             for e in self.enemy2List:
                 e.update()
                 if e.x<=-50:
                     self.enemy2List.remove(e)
-                    self.Lives-=1
+                    self.Lives-=5
             for e in self.enemy3List:
                 e.update()
                 if e.x<=-50:
@@ -296,11 +295,10 @@ class Game:
                 if hasCollideRect(self.sprite, e):
                     self.enemyList.remove(e)
                     self.Lives -= 1
-
             for e in self.enemy2List:
                 if hasCollideRect(self.sprite, e):
                     self.enemy2List.remove(e)
-                    self.Lives -= 1
+                    self.Lives -= 5
             for e in self.enemy3List:
                 if hasCollideRect(self.sprite, e):
                     self.enemy3List.remove(e)
