@@ -119,6 +119,12 @@ while True:
                 game.objectsOnScreen = [game.enemyList, game.enemy2List, game.enemy3List, game.enemy4List, game.bulletList, game.score, game.ammo, game.sprite, game.damagetext]
 
                 state= "Normal"
+            elif state == "Died":
+                game = Game()
+                state= "ControlScreen"
+               # game.objectsOnScreen = [game.enemyList, game.enemy2List, game.enemy3List, game.bulletList, game.score, game.ammo, game.sprite, game.damagetext]
+              
+               
 
     #-------------------------
     # The main game logic block
