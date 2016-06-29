@@ -50,8 +50,9 @@ bulletSound = pygame.mixer.Sound('BulletSound.wav')
 gamesound = pygame.mixer.Sound('gamesong.wav')
 # Lives
 Lives = pygame.image.load("Hearts.png")
-Lives = pygame.transform.scale(Lives, (25,25))
+Lives = pygame.transform.scale(Lives, (35,35))
 Lives.set_colorkey(WHITE)
+Lives.set_alpha()
 
 #First enemy
 enemyF= pygame.image.load('dinoVillan1.png')
@@ -65,11 +66,11 @@ enemy2.set_alpha()
 
 # Second enemy
 enemy3 = pygame.image.load("NewEnemy0.png")
-enemy3 = pygame.transform.scale(enemy3,(60,50))
+enemy3 = pygame.transform.scale(enemy3,(120,100))
 enemy3.set_colorkey(WHITE)
 enemy3.set_alpha()
 enemy32 = pygame.image.load("NewEnemy2.png")
-enemy32 = pygame.transform.scale(enemy32,(60,50))
+enemy32 = pygame.transform.scale(enemy32,(120,100))
 enemy32.set_colorkey(WHITE)
 enemy32.set_alpha()
 
