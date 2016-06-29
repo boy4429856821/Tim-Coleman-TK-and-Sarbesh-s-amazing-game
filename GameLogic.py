@@ -38,14 +38,14 @@ class enemy1():
         self.x += self.vx
         self.img = self.enemyAnim[(self.t // 2 )% 2] 
         self.t = self.t + 1
-<<<<<<< HEAD
+
         
 class enemyW():
     def __init__(self):
         self.enemyAnimA = [GLib.enemy3, GLib.enemy32]
         self.img = GLib.enemy3
         self.x = 1225
-        self.vx= -1
+        self.vx= -2
         self.y =EnemyPositionList[random.randint(0,len(EnemyPositionList)-1)]
         self.t=0
     def update(self):
@@ -53,9 +53,7 @@ class enemyW():
         self.img = self.enemyAnimA[(self.t // 2)% 2]
         self.t = self.t + 1        
         
-=======
-               
->>>>>>> origin/master
+
 class Bullet:
 # self.sprite.x , self.sprite.y
     def __init__(self, x, y): 
@@ -163,7 +161,6 @@ class Game:
                     self.enemyList.append(e)
                 if self.timer % 90 == 0:
                     e=enemy1()
-                    self.enemyList.append(e)
                     self.enemyList.append(e)
                 if self.timer % 70 == 0:
                     e3=enemyW()
