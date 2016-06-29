@@ -124,7 +124,7 @@ class Sprite:
         # TODO: add more properties to Sprite based on your game
         self.vx = 0
         self.vy = 0
-        self.lives=5
+        self.lives=10
         self.bullets=20
     
 
@@ -161,18 +161,10 @@ class Game:
         self.score = Score()
         self.ammo=Ammo()
         self.LastBulletShot=0
-        self.Lives=5
+        self.Lives=10
         self.EQlives=3
         self.damagetext = damagetaken()
         self.EWlives=3
-        self.EQlives=2
-        
-        self.EQlives=3
-        self.damagetext = damagetaken()
-
-        self.EWlives=3
-        self.EQlives=2
-        
         # self.ball = Ball(250, 250, GLib.ballSpriteBLUE)
         # TODO: add any variables you think will be needed as a property of Game
         # ...
@@ -246,18 +238,20 @@ class Game:
                     self.Lives -= 1
                     self.damagetext.update("Damage Taken!")
                     self.damageTimer=self.timer+300
-
             for e in self.enemy2List:
                 e.update()
                 if e.x<=-50:
                     self.enemy2List.remove(e)
-                    self.Lives-=1
+                    self.Lives-=5
+                    self.damagetext.update("Damage Taken!")
+                    self.damageTimer=self.timer+300
             for e in self.enemy3List:
                 e.update()
                 if e.x<=-50:
                     self.enemy3List.remove(e)
                     self.Lives-=1
-
+                    self.damagetext.update("Damage Taken!")
+                    self.damageTimer=self.timer+300
                     
             for i in self.bulletList:
                 i.update()
@@ -296,17 +290,22 @@ class Game:
                 if hasCollideRect(self.sprite, e):
                     self.enemyList.remove(e)
                     self.Lives -= 1
-
+                    self.damagetext.update("Damage Taken!")
+                    self.damageTimer=self.timer+300
             for e in self.enemy2List:
                 if hasCollideRect(self.sprite, e):
                     self.enemy2List.remove(e)
-                    self.Lives -= 1
+                    self.Lives -= 5
+                    self.damagetext.update("Damage Taken!")
+                    self.damageTimer=self.timer+300
             for e in self.enemy3List:
                 if hasCollideRect(self.sprite, e):
                     self.enemy3List.remove(e)
                     self.Lives -= 1
+                    self.damagetext.update("Damage Taken!")
+                    self.damageTimer=self.timer+300
 
-            if self.Lives == 0:
+            if self.Lives < 1:
                 self.objectsOnScreen =[]
             
                 return "Died"
