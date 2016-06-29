@@ -63,20 +63,22 @@ enemy2.set_colorkey(WHITE)
 enemy2.set_alpha()
 
 # Second enemy
-Enemy3 = pygame.image.load("NewEnemy0.png")
-Enemy3 = pygame.transform.scale(Enemy3,(60,50))
-Enemy3.set_colorkey(WHITE)
-Enemy32 = pygame.image.load("NewEnemy2.png")
-Enemy32 = pygame.transform.scale(Enemy32,(60,50))
-Enemy32.set_colorkey(WHITE)
+enemy3 = pygame.image.load("NewEnemy0.png")
+enemy3 = pygame.transform.scale(enemy3,(60,50))
+enemy3.set_colorkey(WHITE)
+enemy3.set_alpha()
+enemy32 = pygame.image.load("NewEnemy2.png")
+enemy32 = pygame.transform.scale(enemy32,(60,50))
+enemy32.set_colorkey(WHITE)
+enemy32.set_alpha()
 
 # "Third" enemy
-Enemy4 = pygame.image.load("ThirdEnemy0.png")
-Enemy4 = pygame.transform.scale(Enemy4,(60,50))
-Enemy4.set_colorkey(WHITE)
-Enemy42 = pygame.image.load("ThirdEnemy.png")
-Enemy42 = pygame.transform.scale(Enemy42,(60,50))
-Enemy42.set_colorkey(WHITE)
+enemy4 = pygame.image.load("ThirdEnemy0.png")
+enemy4 = pygame.transform.scale(enemy4,(60,50))
+enemy4.set_colorkey(WHITE)
+enemy42 = pygame.image.load("ThirdEnemy.png")
+enemy42 = pygame.transform.scale(enemy42,(60,50))
+enemy42.set_colorkey(WHITE)
 
 
 
