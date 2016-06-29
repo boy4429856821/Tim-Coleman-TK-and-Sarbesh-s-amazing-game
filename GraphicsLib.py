@@ -52,6 +52,7 @@ gamesound = pygame.mixer.Sound('gamesong.wav')
 Lives = pygame.image.load("Hearts.png")
 Lives = pygame.transform.scale(Lives, (35,35))
 Lives.set_colorkey(WHITE)
+Lives.set_alpha()
 
 #First enemy
 enemyF= pygame.image.load('dinoVillan1.png')
