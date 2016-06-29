@@ -167,6 +167,12 @@ class Game:
         self.EWlives=3
         self.EQlives=2
         
+        self.EQlives=3
+        self.damagetext = damagetaken()
+
+        self.EWlives=3
+        self.EQlives=2
+        
         # self.ball = Ball(250, 250, GLib.ballSpriteBLUE)
         # TODO: add any variables you think will be needed as a property of Game
         # ...
@@ -299,7 +305,7 @@ class Game:
                 if hasCollideRect(self.sprite, e):
                     self.enemy3List.remove(e)
                     self.Lives -= 1
-                    
+
             if self.Lives == 0:
                 self.objectsOnScreen =[]
             
