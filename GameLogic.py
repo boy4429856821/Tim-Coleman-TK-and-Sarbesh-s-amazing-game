@@ -38,6 +38,7 @@ class enemy1():
         self.x += self.vx
         self.img = self.enemyAnim[(self.t // 2 )% 2] 
         self.t = self.t + 1
+<<<<<<< HEAD
         
 class enemyW():
     def __init__(self):
@@ -52,6 +53,9 @@ class enemyW():
         self.img = self.enemyAnimA[(self.t // 2)% 2]
         self.t = self.t + 1        
         
+=======
+               
+>>>>>>> origin/master
 class Bullet:
 # self.sprite.x , self.sprite.y
     def __init__(self, x, y): 
@@ -110,8 +114,9 @@ class Game:
         self.ammo=Ammo()
         self.LastBulletShot=0
         self.reloadTimer=0
-        self.Lives= 5
-        self.LivesL= [1,2,3,4,5]
+        self.Lives=5
+        self.EQlives=3
+
         # self.ball = Ball(250, 250, GLib.ballSpriteBLUE)
         # TODO: add any variables you think will be needed as a property of Game
         # ...
@@ -126,11 +131,11 @@ class Game:
 
 
     def shoot(self):
-
-        if self.timer-self.LastBulletShot>10 and self.sprite.bullets>0:
-            self.bulletList.append(Bullet(self.sprite.x , self.sprite.y ))
-            self.LastBulletShot=self.timer
-            self.sprite.bullets-=1
+        if self.reloadTimer < self.timer:
+            if self.timer-self.LastBulletShot>10 and self.sprite.bullets>0:
+                self.bulletList.append(Bullet(self.sprite.x , self.sprite.y ))
+                self.LastBulletShot=self.timer
+                self.sprite.bullets-=1
 
     # Try to update all the elements
     # if you want to add another to the screen:                 self.objectsOnScreen.add(x)
@@ -146,6 +151,9 @@ class Game:
         if state == "Normal" or state == "Attack":
             self.timer += 1
             if self.timer > 0 and self.timer < 500:    
+                if self.timer % 100 == 0:
+                    e=enemy1()
+                    self.enemyList.append(e)
                 if self.timer % 100 == 0:
                     e=enemy1()
                     self.enemyList.append(e)
@@ -191,7 +199,10 @@ class Game:
                 for e in self.enemyList:
                     if hasCollideRect(i, e):
                         self.bulletList.remove(i)
+                        self.EQlives-=1
+                    if self.EQlives==0:
                         self.enemyList.remove(e)
+                        self.EQlives=3
                         break
             for e in self.enemyList:
                 if hasCollideRect(self.sprite, e):

@@ -52,7 +52,7 @@ while True:
                 game.sprite.x += -20
               
             if event.key == pygame.K_r:
-                game.reloadTimer=game.timer+50
+                game.reloadTimer=game.timer+40
 
             if event.key == pygame.K_RIGHT:
                 game.sprite.x += 20
