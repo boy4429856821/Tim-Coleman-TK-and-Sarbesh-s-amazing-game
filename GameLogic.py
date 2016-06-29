@@ -75,8 +75,8 @@ class enemyQ():
 
 class enemyT():
     def __init__(self):
-        self.enemyAnim = [GLib.enemyF,GLib.enemy2]
-        self.img = GLib.enemyF
+        self.enemyAnim = [GLib.enemy6,GLib.enemy62]
+        self.img = GLib.enemy6
         self.x = 1225
         self.vx = -8
         self.y=EnemyPositionList[random.randint(0,len(EnemyPositionList)-1)]
@@ -160,16 +160,9 @@ class Game:
         self.bulletList=[]
         self.score = Score()
         self.ammo=Ammo()
+        self.damagetext = damagetaken()
         self.LastBulletShot=0
-        self.Lives=5
-        self.EQlives=3
-        self.damagetext = damagetaken()
-        self.EWlives=3
-        self.EQlives=2
-        
-        self.EQlives=3
-        self.damagetext = damagetaken()
-
+        self.Lives=10
         self.EWlives=3
         self.EQlives=2
         
@@ -217,6 +210,9 @@ class Game:
                 if self.timer % 100 == 0:
                     e=enemyQ()
                     self.enemy3List.append(e)
+                if self.timer % 100 == 0:
+                    e=enemyT()
+                    self.enemy4List.append(e)
             if self.timer > 499 and self.timer < 1000:
                 if self.timer % 90 == 0:
                     e=enemy1()
@@ -246,16 +242,21 @@ class Game:
                     self.Lives -= 1
                     self.damagetext.update("Damage Taken!")
                     self.damageTimer=self.timer+300
-
             for e in self.enemy2List:
                 e.update()
                 if e.x<=-50:
                     self.enemy2List.remove(e)
-                    self.Lives-=1
+                    self.Lives-=5
             for e in self.enemy3List:
                 e.update()
                 if e.x<=-50:
                     self.enemy3List.remove(e)
+                    self.Lives-=1
+            for e in self.enemy4List:
+                e.update()
+                if e.x<=-50:
+                    if e in self.enemy3List:
+                        self.enemy3List.remove(e)
                     self.Lives-=1
 
                     
@@ -296,17 +297,16 @@ class Game:
                 if hasCollideRect(self.sprite, e):
                     self.enemyList.remove(e)
                     self.Lives -= 1
-
             for e in self.enemy2List:
                 if hasCollideRect(self.sprite, e):
                     self.enemy2List.remove(e)
-                    self.Lives -= 1
+                    self.Lives -= 5
             for e in self.enemy3List:
                 if hasCollideRect(self.sprite, e):
                     self.enemy3List.remove(e)
                     self.Lives -= 1
 
-            if self.Lives == 0:
+            if self.Lives < 1:
                 self.objectsOnScreen =[]
             
                 return "Died"
