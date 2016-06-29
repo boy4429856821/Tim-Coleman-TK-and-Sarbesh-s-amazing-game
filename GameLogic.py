@@ -6,6 +6,14 @@ SECSPERPOINT=18
 
 EnemyPositionList=[50,100,150,200,250,300,350,400,450,500,550,600]
 # a great example of an object that can move on the screen
+class damagetaken:
+    def __init__(self):
+        self.update(0)
+        self.x = 300
+        self.y = 350
+    def update(self, damagetext):
+        myfont=pygame.font.SysFont('Calibri',70,bold=True)
+        self.img=myfont.render(str(damagetext),1,GLib.RED)
 class Score:
     def __init__(self):
         self.update(0)
@@ -118,16 +126,17 @@ class Game:
     def __init__(self):
         # initialize the timer to zero. This is like a little clock
         self.timer = 0
+        self.reloadTimer=0
+        self.damageTimer=0
         self.sprite = Sprite()
         self.enemyList = []
         self.bulletList=[]
         self.score = Score()
         self.ammo=Ammo()
         self.LastBulletShot=0
-        self.reloadTimer=0
         self.Lives=5
         self.EQlives=3
-
+        self.damagetext = damagetaken()
         # self.ball = Ball(250, 250, GLib.ballSpriteBLUE)
         # TODO: add any variables you think will be needed as a property of Game
         # ...
@@ -160,6 +169,7 @@ class Game:
         
         # check what state the game is at
         if state == "Normal" or state == "Attack":
+            self.damagetext.update(" ")
             self.timer += 1
             if self.timer > 0 and self.timer < 500:    
                 if self.timer % 100 == 0:
@@ -199,13 +209,17 @@ class Game:
                 if e.x<=-50:
                     self.enemyList.remove(e)
                     self.Lives -= 1
-                
+                    self.damagetext.update("Damage Taken!")
+                    self.damageTimer=self.timer+300
+                    
             for i in self.bulletList:
                 i.update()
                 if i.x>=1200:
                    self.bulletList.remove(i)
             self.score.update(self.timer//SECSPERPOINT)
             self.ammo.update(self.sprite.bullets)
+            if self.damageTimer==self.timer:
+                self.damagetext.update(" ")
             if self.reloadTimer==self.timer:
                 self.sprite.bullets=20
             for i in self.bulletList:
@@ -221,6 +235,7 @@ class Game:
                 if hasCollideRect(self.sprite, e):
                     self.enemyList.remove(e)
                     self.Lives -= 1
+                    
             if self.Lives == 0:
                 self.objectsOnScreen =[]
             
