@@ -243,8 +243,10 @@ class Game:
                 if e.x<=-50:
                     self.enemy2List.remove(e)
                     self.Lives-=5
+
                     self.damagetext.update("Damage Taken!")
                     self.damageTimer=self.timer+300
+
             for e in self.enemy3List:
                 e.update()
                 if e.x<=-50:
@@ -290,14 +292,18 @@ class Game:
                 if hasCollideRect(self.sprite, e):
                     self.enemyList.remove(e)
                     self.Lives -= 1
+
                     self.damagetext.update("Damage Taken!")
                     self.damageTimer=self.timer+300
+
             for e in self.enemy2List:
                 if hasCollideRect(self.sprite, e):
                     self.enemy2List.remove(e)
                     self.Lives -= 5
+
                     self.damagetext.update("Damage Taken!")
                     self.damageTimer=self.timer+300
+
             for e in self.enemy3List:
                 if hasCollideRect(self.sprite, e):
                     self.enemy3List.remove(e)
