@@ -78,10 +78,11 @@ enemy32.set_alpha()
 enemy4 = pygame.image.load("ThirdEnemy0.png")
 enemy4 = pygame.transform.scale(enemy4,(60,50))
 enemy4.set_colorkey(WHITE)
+enemy4.set_alpha()
 enemy42 = pygame.image.load("ThirdEnemy.png")
 enemy42 = pygame.transform.scale(enemy42,(60,50))
 enemy42.set_colorkey(WHITE)
-
+enemy42.set_alpha()
 
 
 
