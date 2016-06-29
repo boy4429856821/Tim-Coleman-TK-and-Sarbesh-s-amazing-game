@@ -197,7 +197,6 @@ class Game:
         
         # check what state the game is at
         if state == "Normal" or state == "Attack":
-            self.damagetext.update(" ")
             self.timer += 1
             if self.timer > 0 and self.timer < 500:    
                 if self.timer % 100 == 0:
@@ -236,24 +235,32 @@ class Game:
                 if e.x<=-50:
                     self.enemyList.remove(e)
                     self.Lives -= 1
-                    self.damagetext.update("Damage Taken!")
-                    self.damageTimer=self.timer+300
+                    self.damageTimer=self.timer+10
+            if self.damageTimer > self.timer:
+                self.damagetext.update("Damage Taken!")
+            else:
+                self.damagetext.update(" ")
             for e in self.enemy2List:
                 e.update()
                 if e.x<=-50:
                     self.enemy2List.remove(e)
                     self.Lives-=5
-
-                    self.damagetext.update("Damage Taken!")
-                    self.damageTimer=self.timer+300
+                    self.damageTimer=self.timer+10
+            if self.damageTimer > self.timer:
+                self.damagetext.update("Damage Taken!")
+            else:
+                self.damagetext.update(" ")
 
             for e in self.enemy3List:
                 e.update()
                 if e.x<=-50:
                     self.enemy3List.remove(e)
                     self.Lives-=1
-                    self.damagetext.update("Damage Taken!")
-                    self.damageTimer=self.timer+300
+                    self.damageTimer=self.timer+10
+            if self.damageTimer > self.timer:
+                self.damagetext.update("Damage Taken!")
+            else:
+                self.damagetext.update(" ")
                     
             for i in self.bulletList:
                 i.update()
@@ -261,8 +268,6 @@ class Game:
                    self.bulletList.remove(i)
             self.score.update(self.timer//SECSPERPOINT)
             self.ammo.update(self.sprite.bullets)
-            if self.damageTimer==self.timer:
-                self.damagetext.update(" ")
             if self.reloadTimer==self.timer:
                 self.sprite.bullets=20
             for i in self.bulletList:
@@ -292,25 +297,31 @@ class Game:
                 if hasCollideRect(self.sprite, e):
                     self.enemyList.remove(e)
                     self.Lives -= 1
-
-                    self.damagetext.update("Damage Taken!")
-                    self.damageTimer=self.timer+300
+                    self.damageTimer=self.timer+10
+            if self.damageTimer > self.timer:
+                self.damagetext.update("Damage Taken!")
+            else:
+                self.damagetext.update(" ")
 
             for e in self.enemy2List:
                 if hasCollideRect(self.sprite, e):
                     self.enemy2List.remove(e)
                     self.Lives -= 5
-
-                    self.damagetext.update("Damage Taken!")
-                    self.damageTimer=self.timer+300
+                    self.damageTimer=self.timer+10
+            if self.damageTimer > self.timer:
+                self.damagetext.update("Damage Taken!")
+            else:
+                self.damagetext.update(" ")
 
             for e in self.enemy3List:
                 if hasCollideRect(self.sprite, e):
                     self.enemy3List.remove(e)
                     self.Lives -= 1
-                    self.damagetext.update("Damage Taken!")
-                    self.damageTimer=self.timer+300
-
+                    self.damageTimer=self.timer+10
+            if self.damageTimer > self.timer:
+                self.damagetext.update("Damage Taken!")
+            else:
+                self.damagetext.update(" ")
             if self.Lives < 1:
                 self.objectsOnScreen =[]
             
