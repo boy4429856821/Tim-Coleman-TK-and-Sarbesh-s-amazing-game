@@ -38,7 +38,6 @@ class enemy1():
         self.x += self.vx
         self.img = self.enemyAnim[(self.t // 2 )% 2] 
         self.t = self.t + 1
-<<<<<<< HEAD
         
 class enemyW():
     def __init__(self):
@@ -52,10 +51,7 @@ class enemyW():
         self.x += self.vx      
         self.img = self.enemyAnimA[(self.t // 2)% 2]
         self.t = self.t + 1        
-        
-=======
-               
->>>>>>> origin/master
+      
 class Bullet:
 # self.sprite.x , self.sprite.y
     def __init__(self, x, y): 
@@ -109,6 +105,7 @@ class Game:
         self.timer = 0
         self.sprite = Sprite()
         self.enemyList = []
+        self.enemy2List = []
         self.bulletList=[]
         self.score = Score()
         self.ammo=Ammo()
@@ -155,8 +152,8 @@ class Game:
                     e=enemy1()
                     self.enemyList.append(e)
                 if self.timer % 100 == 0:
-                    e=enemy1()
-                    self.enemyList.append(e)
+                    e=enemyW()
+                    self.enemy2List.append(e)
             if self.timer > 499 and self.timer < 1000:
                 if self.timer % 90 == 0:
                     e=enemy1()
@@ -164,10 +161,9 @@ class Game:
                 if self.timer % 90 == 0:
                     e=enemy1()
                     self.enemyList.append(e)
-                    self.enemyList.append(e)
                 if self.timer % 70 == 0:
-                    e3=enemyW()
-                    self.enemyList.append(e3)
+                    e=enemyW()
+                    self.enemyList.append(e)
             if self.timer > 999 and self.timer < 1500:
                 if self.timer % 80 == 0:
                     e=enemy1()
@@ -186,6 +182,11 @@ class Game:
                 if e.x<=-50:
                     self.enemyList.remove(e)
                     self.Lives -= 1
+            for e in self.enemy2List:
+                e.update()
+                if e.x<=-50:
+                    self.enemy2List.remove(e)
+                    self.Lives-=1
                 
             for i in self.bulletList:
                 i.update()
@@ -207,6 +208,10 @@ class Game:
             for e in self.enemyList:
                 if hasCollideRect(self.sprite, e):
                     self.enemyList.remove(e)
+                    self.Lives -= 1
+            for e in self.enemy2List:
+                if hasCollideRect(self.sprite, e):
+                    self.enemy2List.remove(e)
                     self.Lives -= 1
             if self.Lives == 0:
                 self.objectsOnScreen =[]

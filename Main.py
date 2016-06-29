@@ -100,7 +100,7 @@ while True:
                 state = "ControlScreen"
             elif state == "ControlScreen":
                 state = "ControlScreen"
-                game.objectsOnScreen = [game.enemyList, game.bulletList, game.score, game.ammo, game.sprite]
+                game.objectsOnScreen = [game.enemyList, game.enemy2List, game.bulletList, game.score, game.ammo, game.sprite]
                 state= "Normal"
             
       
