@@ -114,11 +114,11 @@ class Game:
 
 
     def shoot(self):
-
-        if self.timer-self.LastBulletShot>10 and self.sprite.bullets>0:
-            self.bulletList.append(Bullet(self.sprite.x , self.sprite.y ))
-            self.LastBulletShot=self.timer
-            self.sprite.bullets-=1
+        if self.reloadTimer < self.timer:
+            if self.timer-self.LastBulletShot>10 and self.sprite.bullets>0:
+                self.bulletList.append(Bullet(self.sprite.x , self.sprite.y ))
+                self.LastBulletShot=self.timer
+                self.sprite.bullets-=1
 
     # Try to update all the elements
     # if you want to add another to the screen:                 self.objectsOnScreen.add(x)
