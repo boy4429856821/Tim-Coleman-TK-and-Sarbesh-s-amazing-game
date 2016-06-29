@@ -9,6 +9,7 @@ orange=(255,153,0)
 black = (0,0,0)
 red = (255,25,25)
 
+# First Character walking cycle and shooting cycle
 character1 = pygame.image.load('swatshootingcycle1.png')
 character1= pygame.transform.scale(character1,(70,75))
 character1.set_colorkey(WHITE)
@@ -24,11 +25,13 @@ ShootingSprite =[character1,shotsFired]
 
 #background = pygame.image.load('action cycle 3.jpg')
 #background= pygame.transform.scale(background,(50,55))
+
+# all the staring screens 
 Realbackground = pygame.image.load('Mbackground.png')
 Realbackground= pygame.transform.scale(Realbackground,(1250,800))
 characterAnimationL = [character1,character2]
 Startscreen = pygame.image.load("starting pic.png")
-Startscreen = pygame.transform.scale(Startscreen,(1250,700))
+Startscreen = pygame.transform.scale(Startscreen,(1300,700))
 Startscreen2 = pygame.image.load("ChocoBible.png")
 Startscreen2 = pygame.transform.scale(Startscreen2,(1250,800))
 Startscreen3 = pygame.image.load("ChocoPages.png")
@@ -41,12 +44,15 @@ ShootingSprite = [character1,shotsFired]
 GameoverS = pygame.image.load("GameOverScreen.png")
 GameoverS = pygame.transform.scale(GameoverS,(1250,700))
 
+# bullet sound 
 bulletSound = pygame.mixer.Sound('BulletSound.wav')
 
+# Lives
 Lives = pygame.image.load("Hearts.png")
 Lives = pygame.transform.scale(Lives, (25,25))
 Lives.set_colorkey(WHITE)
 
+#First enemy
 enemyF= pygame.image.load('dinoVillan1.png')
 enemyF= pygame.transform.scale(enemyF,(60,50))
 enemyF.set_colorkey(WHITE)
@@ -55,6 +61,27 @@ enemy2 = pygame.image.load('dinoVillan2.png')
 enemy2= pygame.transform.scale(enemy2,(60,50))
 enemy2.set_colorkey(WHITE)
 enemy2.set_alpha()
+
+# Second enemy
+Enemy3 = pygame.image.load("NewEnemy0.png")
+Enemy3 = pygame.transform.scale(Enemy3,(60,50))
+Enemy3.set_colorkey(WHITE)
+Enemy32 = pygame.image.load("NewEnemy2.png")
+Enemy32 = pygame.transform.scale(Enemy32,(60,50))
+Enemy32.set_colorkey(WHITE)
+
+# "Third" enemy
+Enemy4 = pygame.image.load("ThirdEnemy0.png")
+Enemy4 = pygame.transform.scale(Enemy4,(60,50))
+Enemy4.set_colorkey(WHITE)
+Enemy42 = pygame.image.load("ThirdEnemy.png")
+Enemy42 = pygame.transform.scale(Enemy42,(60,50))
+Enemy42.set_colorkey(WHITE)
+
+
+
+
+# bullet animation
 bullet=pygame.Surface((10,4))
 pygame.draw.rect(bullet,black,(0, 0, 10, 4))
         
