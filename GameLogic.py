@@ -304,7 +304,7 @@ class Game:
                     self.enemy3List.remove(e)
                     self.Lives -= 1
 
-            if self.Lives == 0:
+            if self.Lives < 1:
                 self.objectsOnScreen =[]
             
                 return "Died"
