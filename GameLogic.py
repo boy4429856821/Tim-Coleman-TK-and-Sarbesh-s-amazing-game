@@ -322,7 +322,7 @@ class Game:
             # you can replace the next line                     
         if state == "Normal":
             screen.blit(GLib.Realbackground, (-25, -15))
-            screen.blit(GLib.Lives,(100,5))
+            screen.blit(GLib.Lives,(96.5,1))
             myfont=pygame.font.SysFont('Calibri',20,bold=True)
             img=myfont.render(str(self.Lives),1,GLib.WHITE)
             screen.blit(img,(110,10))
