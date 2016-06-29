@@ -263,7 +263,7 @@ class Game:
             screen.blit(GLib.Realbackground,(-25,-15))
         if state == "Died":
             screen.blit(GLib.GameoverS,(0,0))
-        
+            
 
 
         for obj in self.objectsOnScreen:

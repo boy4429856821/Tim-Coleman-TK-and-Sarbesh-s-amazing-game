@@ -65,10 +65,11 @@ while True:
             if event.key == pygame.K_DOWN:
                 game.sprite.y += 20
             if event.key == pygame.K_SPACE:
-                state = "Attack"
-                game.shoot()
-                GLib.bulletSound.play()
-               # game.objectsOnScreen = [game.sprite, game.enemyList]
+                if state != "Died":
+                 state = "Attack"
+                 game.shoot()
+                 GLib.bulletSound.play()
+                 # game.objectsOnScreen = [game.sprite, game.enemyList]
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT:
                 game.sprite.x += 0
