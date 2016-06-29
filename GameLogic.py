@@ -46,21 +46,20 @@ class enemy1():
         self.x += self.vx
         self.img = self.enemyAnim[(self.t // 2 )% 2] 
         self.t = self.t + 1
-
         
 class enemyW():
     def __init__(self):
         self.enemyAnimA = [GLib.enemy3, GLib.enemy32]
         self.img = GLib.enemy3
         self.x = 1225
-        self.vx= -2
+        self.vx= -1
         self.y =EnemyPositionList[random.randint(0,len(EnemyPositionList)-1)]
         self.t=0
     def update(self):
         self.x += self.vx      
         self.img = self.enemyAnimA[(self.t // 2)% 2]
         self.t = self.t + 1        
-        
+  
 class enemyQ():
     def __init__(self):
         self.enemyAnimaT = [GLib.enemy4, GLib.enemy42]
@@ -73,7 +72,32 @@ class enemyQ():
         self.x += self.vx
         self.img = self.enemyAnimaT[(self.t // 2)% 2]
         self.t = self.t + 1
-        
+
+class enemyT():
+    def __init__(self):
+        self.enemyAnim = [GLib.enemyF,GLib.enemy2]
+        self.img = GLib.enemyF
+        self.x = 1225
+        self.vx = -8
+        self.y=EnemyPositionList[random.randint(0,len(EnemyPositionList)-1)]
+        self.t =0
+    def update(self):
+        self.x += self.vx
+        self.img = self.enemyAnim[(self.t // 2 )% 2] 
+        self.t = self.t + 1
+
+class enemyK():
+    def __init__(self):
+        self.enemyAnim = [GLib.enemyF,GLib.enemy2]
+        self.img = GLib.enemyF
+        self.x = 1225
+        self.vx = -8
+        self.y=EnemyPositionList[random.randint(0,len(EnemyPositionList)-1)]
+        self.t =0
+    def update(self):
+        self.x += self.vx
+        self.img = self.enemyAnim[(self.t // 2 )% 2] 
+        self.t = self.t + 1
         
 class Bullet:
 # self.sprite.x , self.sprite.y
@@ -130,13 +154,23 @@ class Game:
         self.damageTimer=0
         self.sprite = Sprite()
         self.enemyList = []
+        self.enemy2List = []
+        self.enemy3List = []
+        self.enemy4List = []
         self.bulletList=[]
         self.score = Score()
         self.ammo=Ammo()
         self.LastBulletShot=0
         self.Lives=5
+<<<<<<< HEAD
         self.EQlives=3
         self.damagetext = damagetaken()
+=======
+        self.EWlives=3
+        self.EQlives=2
+        
+
+>>>>>>> origin/master
         # self.ball = Ball(250, 250, GLib.ballSpriteBLUE)
         # TODO: add any variables you think will be needed as a property of Game
         # ...
@@ -176,11 +210,11 @@ class Game:
                     e=enemy1()
                     self.enemyList.append(e)
                 if self.timer % 100 == 0:
-                    e=enemy1()
-                    self.enemyList.append(e)
+                    e=enemyW()
+                    self.enemy2List.append(e)
                 if self.timer % 100 == 0:
-                    e4 = enemyQ()
-                    self.enemyList.append(e4)
+                    e=enemyQ()
+                    self.enemy3List.append(e)
             if self.timer > 499 and self.timer < 1000:
                 if self.timer % 90 == 0:
                     e=enemy1()
@@ -189,8 +223,8 @@ class Game:
                     e=enemy1()
                     self.enemyList.append(e)
                 if self.timer % 70 == 0:
-                    e3=enemyW()
-                    self.enemyList.append(e3)
+                    e=enemyW()
+                    self.enemyList.append(e)
             if self.timer > 999 and self.timer < 1500:
                 if self.timer % 80 == 0:
                     e=enemy1()
@@ -199,7 +233,6 @@ class Game:
                 if self.timer % 70 == 0:
                     e=enemy1()
                     self.enemyList.append(e)
-
             if self.timer > 1999 and self.timer < 2500:
                 if self.timer % 60 == 0:
                     e=enemy1()
@@ -209,8 +242,21 @@ class Game:
                 if e.x<=-50:
                     self.enemyList.remove(e)
                     self.Lives -= 1
+<<<<<<< HEAD
                     self.damagetext.update("Damage Taken!")
                     self.damageTimer=self.timer+300
+=======
+            for e in self.enemy2List:
+                e.update()
+                if e.x<=-50:
+                    self.enemy2List.remove(e)
+                    self.Lives-=1
+            for e in self.enemy3List:
+                e.update()
+                if e.x<=-50:
+                    self.enemy3List.remove(e)
+                    self.Lives-=1
+>>>>>>> origin/master
                     
             for i in self.bulletList:
                 i.update()
@@ -226,15 +272,40 @@ class Game:
                 for e in self.enemyList:
                     if hasCollideRect(i, e):
                         self.bulletList.remove(i)
+                        self.enemyList.remove(e)
+                        break
+                for e in self.enemy2List:
+                    if hasCollideRect(i, e):
+                        self.bulletList.remove(i)
+                        self.EWlives-=1
+                    if self.EWlives==0:
+                        self.enemy2List.remove(e)
+                        self.EWlives=3
+                        break
+                for e in self.enemy3List:
+                    if hasCollideRect(i, e):
+                        self.bulletList.remove(i)
                         self.EQlives-=1
                     if self.EQlives==0:
-                        self.enemyList.remove(e)
-                        self.EQlives=3
+                        self.enemy3List.remove(e)
+                        self.EQlives=2
                         break
+                        
             for e in self.enemyList:
                 if hasCollideRect(self.sprite, e):
                     self.enemyList.remove(e)
                     self.Lives -= 1
+<<<<<<< HEAD
+=======
+            for e in self.enemy2List:
+                if hasCollideRect(self.sprite, e):
+                    self.enemy2List.remove(e)
+                    self.Lives -= 1
+            for e in self.enemy3List:
+                if hasCollideRect(self.sprite, e):
+                    self.enemy3List.remove(e)
+                    self.Lives -= 1
+>>>>>>> origin/master
                     
             if self.Lives == 0:
                 self.objectsOnScreen =[]

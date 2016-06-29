@@ -47,7 +47,22 @@ while True:
         if event.type == pygame.QUIT:
             # if someone tries to close the Windows
             exit()
-        # TODO: replace the reset with your designed input
+  # TODO: replace the reset with your designed input
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_a:
+                game.sprite.x += -20
+              
+
+            if event.key == pygame.K_d:
+                game.sprite.x += 20
+          
+                
+                #state = "MovingLeft"            
+            if event.key == pygame.K_w:
+                game.sprite.y += -20
+            if event.key == pygame.K_s:
+                game.sprite.y += 20
+            
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
                 game.sprite.x += -20
@@ -102,7 +117,11 @@ while True:
                 state = "ControlScreen"
             elif state == "ControlScreen":
                 state = "ControlScreen"
+<<<<<<< HEAD
                 game.objectsOnScreen = [game.enemyList, game.bulletList, game.score, game.ammo, game.sprite, game.damagetext]
+=======
+                game.objectsOnScreen = [game.enemyList, game.enemy2List, game.enemy3List, game.bulletList, game.score, game.ammo, game.sprite]
+>>>>>>> origin/master
                 state= "Normal"
             
       
