@@ -46,7 +46,8 @@ GameoverS = pygame.transform.scale(GameoverS,(1250,700))
 
 # bullet sound 
 bulletSound = pygame.mixer.Sound('BulletSound.wav')
-
+#game music
+gamesound = pygame.mixer.Sound('gamesong.wav')
 # Lives
 Lives = pygame.image.load("Hearts.png")
 Lives = pygame.transform.scale(Lives, (25,25))

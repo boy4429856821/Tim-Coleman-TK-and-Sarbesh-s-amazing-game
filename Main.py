@@ -27,6 +27,7 @@ game = Game()
 
 # Let state1 be the initial state
 state = "Startscreen2"
+GLib.gamesound.play(-1)
 
 #-------------------------
 # Our Main Loop
@@ -55,7 +56,7 @@ while True:
 
             if event.key == pygame.K_RIGHT:
                 game.sprite.x += 20
-                
+          
                 
                 #state = "MovingLeft"            
             if event.key == pygame.K_UP:
@@ -102,7 +103,7 @@ while True:
                 game.objectsOnScreen = [game.enemyList, game.bulletList, game.score, game.ammo, game.sprite]
                 state= "Normal"
             
-
+      
             
 
 
