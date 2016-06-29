@@ -117,11 +117,7 @@ while True:
                 state = "ControlScreen"
             elif state == "ControlScreen":
                 state = "ControlScreen"
-<<<<<<< HEAD
                 game.objectsOnScreen = [game.enemyList, game.bulletList, game.score, game.ammo, game.sprite, game.damagetext]
-=======
-                game.objectsOnScreen = [game.enemyList, game.enemy2List, game.enemy3List, game.bulletList, game.score, game.ammo, game.sprite]
->>>>>>> origin/master
                 state= "Normal"
             
       
