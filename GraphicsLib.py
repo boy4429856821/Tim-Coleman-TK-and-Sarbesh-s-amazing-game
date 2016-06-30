@@ -83,19 +83,20 @@ enemy42 = pygame.image.load("ThirdEnemy.png")
 enemy42 = pygame.transform.scale(enemy42,(60,50))
 enemy42.set_colorkey(WHITE)
 enemy42.set_alpha()
+
 # Fourth  enemy
 enemy5 = pygame.image.load("Pheonix0.png")
-enemy5 = pygame.transform.scale(enemy5,(60,50))
+enemy5 = pygame.transform.scale(enemy5,(80,70))
 enemy5.set_colorkey(WHITE)
 enemy5.set_alpha()
 enemy52 = pygame.image.load("Pheonix2.png")
-enemy52 = pygame.transform.scale(enemy52,(60,50))
+enemy52 = pygame.transform.scale(enemy52,(80,70))
 enemy52.set_colorkey(WHITE)
 enemy52.set_alpha()
 
 # Fifth enemy
 enemy6 = pygame.image.load("Griffin0.png")
-enemy6 = pygame.transform.scale(enemy4,(60,50))
+enemy6 = pygame.transform.scale(enemy6,(60,50))
 enemy6.set_colorkey(WHITE)
 enemy6.set_alpha()
 enemy62 = pygame.image.load("Griffin01.png")

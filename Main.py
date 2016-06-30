@@ -116,7 +116,7 @@ while True:
             elif state == "ControlScreen":
                 state = "ControlScreen"
 
-                game.objectsOnScreen = [game.enemyList, game.enemy2List, game.enemy3List, game.enemy4List, game.bulletList, game.score, game.ammo, game.sprite, game.damagetext]
+                game.objectsOnScreen = [game.enemyList, game.enemy2List, game.enemy3List, game.enemy4List, game.enemy5List, game.bulletList, game.score, game.ammo, game.sprite, game.damagetext]
 
                 state= "Normal"
 
@@ -138,5 +138,5 @@ while True:
     
     pygame.display.flip()
     # ask pygame to display everythong on the GUI
-    pygame.time.wait(10)
-    # delay the time, so can see the Windows, controls the frame rate
+    pygame.time.wait(1)
+    # delay the time, so can see the Windows, controls the frame rate 

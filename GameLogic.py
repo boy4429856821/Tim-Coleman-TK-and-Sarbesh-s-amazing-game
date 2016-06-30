@@ -73,27 +73,32 @@ class enemyQ():
         self.img = self.enemyAnimaT[(self.t // 2)% 2]
         self.t = self.t + 1
 
+class enemyK():
+    def __init__(self):
+        self.enemyAnim = [GLib.enemy5,GLib.enemy52]
+        self.img = GLib.enemy5
+        self.x = 1225
+        self.vx = -6
+        self.vy = 3
+        self.y=EnemyPositionList[random.randint(0,len(EnemyPositionList)-1)]
+        self.t =0
+    def update(self):
+        self.x += self.vx
+        self.y += self.vy
+        self.img = self.enemyAnim[(self.t // 2 )% 2] 
+        self.t = self.t + 1
+        bounceIn(self,-100,50,1300,650)
+        
+        
 class enemyT():
     def __init__(self):
         self.enemyAnim = [GLib.enemy6,GLib.enemy62]
         self.img = GLib.enemy6
         self.x = 1225
-        self.vx = -8
+        self.vx = -10
         self.y=EnemyPositionList[random.randint(0,len(EnemyPositionList)-1)]
         self.t =0
-    def update(self):
-        self.x += self.vx
-        self.img = self.enemyAnim[(self.t // 2 )% 2] 
-        self.t = self.t + 1
-
-class enemyK():
-    def __init__(self):
-        self.enemyAnim = [GLib.enemyF,GLib.enemy2]
-        self.img = GLib.enemyF
-        self.x = 1225
-        self.vx = -8
-        self.y=EnemyPositionList[random.randint(0,len(EnemyPositionList)-1)]
-        self.t =0
+        
     def update(self):
         self.x += self.vx
         self.img = self.enemyAnim[(self.t // 2 )% 2] 
@@ -157,6 +162,7 @@ class Game:
         self.enemy2List = []
         self.enemy3List = []
         self.enemy4List = []
+        self.enemy5List = []
         self.bulletList=[]
         self.score = Score()
         self.ammo=Ammo()
@@ -200,43 +206,85 @@ class Game:
         if state == "Normal" or state == "Attack":
             self.timer += 1
             if self.timer > 0 and self.timer < 500:    
-                if self.timer % 100 == 0:
+                if self.timer % 80 == 0:
                     e=enemy1()
                     self.enemyList.append(e)
-                if self.timer % 100 == 0:
-                    e=enemyW()
-                    self.enemy2List.append(e)
-                if self.timer % 100 == 0:
-                    e=enemyQ()
-                    self.enemy3List.append(e)
-                if self.timer % 100 == 0:
-                    e=enemyT()
-                    self.enemy4List.append(e)
             if self.timer > 499 and self.timer < 1000:
-                if self.timer % 90 == 0:
+                if self.timer % 80 == 0:
                     e=enemy1()
                     self.enemyList.append(e)
-                if self.timer % 90 == 0:
+                if self.timer % 80 == 0:
                     e=enemy1()
-                    self.enemyList.append(e)
-                if self.timer % 70 == 0:
-                    e=enemyW()
                     self.enemyList.append(e)
             if self.timer > 999 and self.timer < 1500:
                 if self.timer % 80 == 0:
                     e=enemy1()
                     self.enemyList.append(e)
+                if self.timer % 80 == 0:
+                    e=enemyQ()
+                    self.enemy3List.append(e)
             if self.timer > 1499 and self.timer < 2000:
-                if self.timer % 70 == 0:
+                if self.timer % 80 == 0:
                     e=enemy1()
                     self.enemyList.append(e)
+                if self.timer % 80 == 0:
+                    e=enemyQ()
+                    self.enemy3List.append(e)
+                if self.timer % 80 == 0:
+                    e=enemyW()
+                    self.enemy2List.append(e)
             if self.timer > 1999 and self.timer < 2500:
-                if self.timer % 60 == 0:
+                if self.timer % 80 == 0:
                     e=enemy1()
-                    self.enemyList.append(e)        
+                    self.enemyList.append(e)
+                if self.timer % 80 == 0:
+                    e=enemyT()
+                    self.enemy4List.append(e)
+                if self.timer % 80 == 0:
+                    e=enemyK()
+                    self.enemy5List.append(e)
+            if self.timer > 2499 and self.timer < 3000:
+                if self.timer % 110 == 0:
+                    e=enemy1()
+                    self.enemyList.append(e)
+                if self.timer % 110 == 0:
+                    e=enemy1()
+                    self.enemyList.append(e)
+                if self.timer % 110 == 0:
+                    e=enemyW()
+                    self.enemy2List.append(e)
+                if self.timer % 110 == 0:
+                    e=enemyQ()
+                    self.enemy3List.append(e)
+                if self.timer % 110 == 0:
+                    e=enemyT()
+                    self.enemy4List.append(e)
+            if self.timer > 2999:
+                if self.timer % 150 == 0:
+                    e=enemy1()
+                    self.enemyList.append(e)
+                if self.timer % 150 == 0:
+                    e=enemyW()
+                    self.enemy2List.append(e)
+                if self.timer % 150 == 0:
+                    e=enemyQ()
+                    self.enemy3List.append(e)
+                if self.timer % 150 == 0:
+                    e=enemyT()
+                    self.enemy4List.append(e)
+                if self.timer % 150 == 0:
+                    e=enemyK()
+                    self.enemy5List.append(e)
+                    
             for e in self.enemyList: 
                 e.update()
                 if e.x<=-50:
+                    if e in self.enemy4List:
+                        self.enemy4List.remove(e)
+                    if e in self.enemy2List:
+                        self.enemy2List.remove(e)
+                    if e in self.enemy3List:
+                        self.enemy3List.remove(e)
                     self.enemyList.remove(e)
                     self.Lives -= 1
                     self.damageTimer=self.timer+10
@@ -248,6 +296,12 @@ class Game:
             for e in self.enemy2List:
                 e.update()
                 if e.x<=-50:
+                    if e in self.enemyList:
+                        self.enemyList.remove(e)
+                    if e in self.enemy4List:
+                        self.enemy4List.remove(e)
+                    if e in self.enemy3List:
+                        self.enemy3List.remove(e)
                     self.enemy2List.remove(e)
                     self.Lives-=5
                     self.damageTimer=self.timer+10
@@ -259,15 +313,46 @@ class Game:
             for e in self.enemy3List:
                 e.update()
                 if e.x<=-50:
+                    if e in self.enemyList:
+                        self.enemyList.remove(e)
+                    if e in self.enemy2List:
+                        self.enemy2List.remove(e)
+                    if e in self.enemy4List:
+                        self.enemy4List.remove(e)
                     self.enemy3List.remove(e)
                     self.Lives-=1
-
+                    self.damageTimer=self.timer+10
+            if self.damageTimer > self.timer:
+                self.damagetext.update("Damage Taken!")
+            else:
+                self.damagetext.update(" ")
+            
+            print(self.enemy4List)
             for e in self.enemy4List:
+                print(e)
                 e.update()
                 if e.x<=-50:
+                    if e in self.enemyList:
+                        self.enemyList.remove(e)
+                    if e in self.enemy2List:
+                        self.enemy2List.remove(e)
                     if e in self.enemy3List:
                         self.enemy3List.remove(e)
                     self.Lives-=1
+                    self.enemy4List.remove(e)
+                    self.damageTimer=self.timer+10
+            if self.damageTimer > self.timer:
+                self.damagetext.update("Damage Taken!")
+            else:
+                self.damagetext.update(" ")
+            
+            for e in self.enemy5List:
+                e.update()
+                if e.x<=-50:
+                    if e in self.enemy4List:
+                        self.enemy4List.remove(e)
+                    self.Lives-=1
+                    self.enemy5List.remove(e)
                     self.damageTimer=self.timer+10
             if self.damageTimer > self.timer:
                 self.damagetext.update("Damage Taken!")
@@ -304,6 +389,16 @@ class Game:
                         self.enemy3List.remove(e)
                         self.EQlives=2
                         break
+                for e in self.enemy4List:    
+                    if hasCollideRect(i, e):
+                        self.bulletList.remove(i)
+                        self.enemy4List.remove(e)
+                        break
+                for e in self.enemy5List:
+                    if hasCollideRect(i, e):
+                        self.bulletList.remove(i)
+                        self.enemy5List.remove(e)
+                        break
                         
             for e in self.enemyList:
                 if hasCollideRect(self.sprite, e):
@@ -334,6 +429,27 @@ class Game:
                 self.damagetext.update("Damage Taken!")
             else:
                 self.damagetext.update(" ")
+           
+            for e in self.enemy4List:
+                if hasCollideRect(self.sprite, e):
+                    self.enemy4List.remove(e)
+                    self.Lives -= 2
+                    self.damageTimer=self.timer+10
+            if self.damageTimer > self.timer:
+                self.damagetext.update("Damage Taken!")
+            else:
+                self.damagetext.update(" ")
+
+            for e in self.enemy5List:
+                if hasCollideRect(self.sprite, e):
+                    self.enemy5List.remove(e)
+                    self.Lives -= 1
+                    self.damageTimer=self.timer+10
+            if self.damageTimer > self.timer:
+                self.damagetext.update("Damage Taken!")
+            else:
+                self.damagetext.update(" ")
+                                
 
             if self.Lives < 1:
                 self.objectsOnScreen =[]
