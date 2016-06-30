@@ -88,7 +88,7 @@ while True:
                  game.objectsOnScreen = [game.enemyList, game.enemy2List, game.enemy3List, game.enemy4List, game.bulletList, game.score, game.ammo, game.sprite, game.damagetext]
 
         if event.type == pygame.KEYUP:
-            if event.key = = pygame.K_LEFT:
+            if event.key == pygame.K_LEFT:
                 game.sprite.x += 0
             if event.key == pygame.K_RIGHT:
                 if state != "Died":

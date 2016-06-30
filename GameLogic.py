@@ -95,9 +95,10 @@ class enemyT():
         self.enemyAnim = [GLib.enemy6,GLib.enemy62]
         self.img = GLib.enemy6
         self.x = 1225
-        self.t = 0
         self.vx = -10
-    
+        self.y=EnemyPositionList[random.randint(0,len(EnemyPositionList)-1)]
+        self.t =0
+        
     def update(self):
         self.x += self.vx
         self.img = self.enemyAnim[(self.t // 2 )% 2] 
@@ -360,7 +361,8 @@ class Game:
             for i in self.bulletList:
                 i.update()
                 if i.x>=1200:
-                   self.bulletList.remove(i)
+                    if i in self.bulletList:
+                        self.bulletList.remove(i)
             self.score.update(self.timer//SECSPERPOINT)
             self.ammo.update(self.sprite.bullets)
             if self.reloadTimer==self.timer:
@@ -368,39 +370,50 @@ class Game:
             for i in self.bulletList:
                 for e in self.enemyList:
                     if hasCollideRect(i, e):
-                        self.bulletList.remove(i)
-                        self.enemyList.remove(e)
+                        if i in self.bulletList:
+                            self.bulletList.remove(i)
+                        if e in self.enemyList:
+                            self.enemyList.remove(e)
                         break
                 for e in self.enemy2List:
                     if hasCollideRect(i, e):
-                        self.bulletList.remove(i)
+                        if i in self.bulletList:
+                            self.bulletList.remove(i)
                         self.EWlives-=1
                     if self.EWlives==0:
-                        self.enemy2List.remove(e)
+                        if e in self.enemy2List:
+                            self.enemy2List.remove(e)
                         self.EWlives=3
                         break
                 for e in self.enemy3List:
                     if hasCollideRect(i, e):
-                        self.bulletList.remove(i)
+                        if i in self.bulletList:
+                            self.bulletList.remove(i)
                         self.EQlives-=1
                     if self.EQlives==0:
-                        self.enemy3List.remove(e)
+                        if e in self.enemy3List:
+                            self.enemy3List.remove(e)
                         self.EQlives=2
                         break
                 for e in self.enemy4List:    
                     if hasCollideRect(i, e):
-                        self.bulletList.remove(i)
-                        self.enemy4List.remove(e)
+                        if i in self.bulletList:
+                            self.bulletList.remove(i)
+                        if e in self.enemy4List:    
+                            self.enemy4List.remove(e)
                         break
                 for e in self.enemy5List:
                     if hasCollideRect(i, e):
-                        self.bulletList.remove(i)
-                        self.enemy5List.remove(e)
+                        if i in self.bulletList:
+                            self.bulletList.remove(i)
+                        if e in self.enemy5List:    
+                            self.enemy5List.remove(e)
                         break
                         
             for e in self.enemyList:
                 if hasCollideRect(self.sprite, e):
-                    self.enemyList.remove(e)
+                    if e in self.enemyList:
+                        self.enemyList.remove(e)
                     self.Lives -= 1
                     self.damageTimer=self.timer+10
             if self.damageTimer > self.timer:
@@ -410,7 +423,8 @@ class Game:
 
             for e in self.enemy2List:
                 if hasCollideRect(self.sprite, e):
-                    self.enemy2List.remove(e)
+                    if e in self.enemy2List:
+                        self.enemy2List.remove(e)
                     self.Lives -= 5
                     self.damageTimer=self.timer+10
             if self.damageTimer > self.timer:
@@ -420,7 +434,8 @@ class Game:
 
             for e in self.enemy3List:
                 if hasCollideRect(self.sprite, e):
-                    self.enemy3List.remove(e)
+                    if e in self.enemy3List:    
+                        self.enemy3List.remove(e)
                     self.Lives -= 1
                     self.damageTimer=self.timer+10
             if self.damageTimer > self.timer:
@@ -430,7 +445,8 @@ class Game:
            
             for e in self.enemy4List:
                 if hasCollideRect(self.sprite, e):
-                    self.enemy4List.remove(e)
+                    if e in self.enemy4List:    
+                        self.enemy4List.remove(e)
                     self.Lives -= 2
                     self.damageTimer=self.timer+10
             if self.damageTimer > self.timer:
@@ -440,7 +456,8 @@ class Game:
 
             for e in self.enemy5List:
                 if hasCollideRect(self.sprite, e):
-                    self.enemy5List.remove(e)
+                    if e in self.enemy5List:    
+                        self.enemy5List.remove(e)
                     self.Lives -= 1
                     self.damageTimer=self.timer+10
             if self.damageTimer > self.timer:
