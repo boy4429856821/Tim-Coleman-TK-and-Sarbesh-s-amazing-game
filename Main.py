@@ -80,13 +80,15 @@ while True:
             if event.key == pygame.K_DOWN:
                 game.sprite.y += 20
             if event.key == pygame.K_SPACE:
-                if state != "Died":
+              
+                if state != "Died" :
                  state = "Attack"
                  game.shoot()
                  GLib.bulletSound.play()
-                 # game.objectsOnScreen = [game.sprite, game.enemyList]
+                 game.objectsOnScreen = [game.enemyList, game.enemy2List, game.enemy3List, game.enemy4List, game.bulletList, game.score, game.ammo, game.sprite, game.damagetext]
+
         if event.type == pygame.KEYUP:
-            if event.key == pygame.K_LEFT:
+            if event.key = = pygame.K_LEFT:
                 game.sprite.x += 0
             if event.key == pygame.K_RIGHT:
                 if state != "Died":
@@ -119,6 +121,12 @@ while True:
                 game.objectsOnScreen = [game.enemyList, game.enemy2List, game.enemy3List, game.enemy4List, game.enemy5List, game.bulletList, game.score, game.ammo, game.sprite, game.damagetext]
 
                 state= "Normal"
+            elif state == "Died":
+                game = Game()
+                state= "ControlScreen"
+               # game.objectsOnScreen = [game.enemyList, game.enemy2List, game.enemy3List, game.bulletList, game.score, game.ammo, game.sprite, game.damagetext]
+              
+               
 
     #-------------------------
     # The main game logic block

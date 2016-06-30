@@ -33,7 +33,7 @@ class Ammo:
     def update(self,bulletNum):
         myfont=pygame.font.SysFont('Calibri',20,bold=True)
         self.img=myfont.render("Ammo:"+str(bulletNum),1,GLib.BLACK)
-
+#original basic boy
 class enemy1():
     def __init__(self):
         self.enemyAnim = [GLib.enemyF,GLib.enemy2]
@@ -46,7 +46,7 @@ class enemy1():
         self.x += self.vx
         self.img = self.enemyAnim[(self.t // 2 )% 2] 
         self.t = self.t + 1
-        
+# big boy
 class enemyW():
     def __init__(self):
         self.enemyAnimA = [GLib.enemy3, GLib.enemy32]
@@ -59,8 +59,8 @@ class enemyW():
         self.x += self.vx      
         self.img = self.enemyAnimA[(self.t // 2)% 2]
         self.t = self.t + 1        
-  
-class enemyQ():
+# drag boy  
+class enemyQ(): 
     def __init__(self):
         self.enemyAnimaT = [GLib.enemy4, GLib.enemy42]
         self.img = GLib.enemy4
@@ -95,15 +95,15 @@ class enemyT():
         self.enemyAnim = [GLib.enemy6,GLib.enemy62]
         self.img = GLib.enemy6
         self.x = 1225
+        self.t = 0
         self.vx = -10
-        self.y=EnemyPositionList[random.randint(0,len(EnemyPositionList)-1)]
-        self.t =0
-        
+    
     def update(self):
         self.x += self.vx
         self.img = self.enemyAnim[(self.t // 2 )% 2] 
         self.t = self.t + 1
-        
+#wtf another original basic boy??
+
 class Bullet:
 # self.sprite.x , self.sprite.y
     def __init__(self, x, y): 
@@ -326,8 +326,6 @@ class Game:
                 self.damagetext.update("Damage Taken!")
             else:
                 self.damagetext.update(" ")
-            
-            print(self.enemy4List)
             for e in self.enemy4List:
                 print(e)
                 e.update()
