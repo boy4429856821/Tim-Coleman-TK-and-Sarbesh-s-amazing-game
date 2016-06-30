@@ -47,7 +47,7 @@ class enemy1():
         self.img = self.enemyAnim[(self.t // 2 )% 2] 
         self.t = self.t + 1
         
-class enemyW():
+class enemyW(): # running in four legs
     def __init__(self):
         self.enemyAnimA = [GLib.enemy3, GLib.enemy32]
         self.img = GLib.enemy3
@@ -60,7 +60,7 @@ class enemyW():
         self.img = self.enemyAnimA[(self.t // 2)% 2]
         self.t = self.t + 1        
   
-class enemyQ():
+class enemyQ(): # Dragon
     def __init__(self):
         self.enemyAnimaT = [GLib.enemy4, GLib.enemy42]
         self.img = GLib.enemy4
@@ -73,7 +73,7 @@ class enemyQ():
         self.img = self.enemyAnimaT[(self.t // 2)% 2]
         self.t = self.t + 1
 
-class enemyT():
+class enemyT(): # griffin
     def __init__(self):
         self.enemyAnim = [GLib.enemy6,GLib.enemy62]
         self.img = GLib.enemy6
