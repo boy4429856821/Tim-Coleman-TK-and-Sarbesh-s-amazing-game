@@ -95,7 +95,7 @@ enemy52.set_alpha()
 
 # Fifth enemy
 enemy6 = pygame.image.load("Griffin0.png")
-enemy6 = pygame.transform.scale(enemy4,(60,50))
+enemy6 = pygame.transform.scale(enemy6,(60,50))
 enemy6.set_colorkey(WHITE)
 enemy6.set_alpha()
 enemy62 = pygame.image.load("Griffin01.png")
