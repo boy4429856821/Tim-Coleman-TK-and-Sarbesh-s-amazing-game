@@ -33,7 +33,7 @@ class Ammo:
     def update(self,bulletNum):
         myfont=pygame.font.SysFont('Calibri',20,bold=True)
         self.img=myfont.render("Ammo:"+str(bulletNum),1,GLib.BLACK)
-
+#original basic boy
 class enemy1():
     def __init__(self):
         self.enemyAnim = [GLib.enemyF,GLib.enemy2]
@@ -46,8 +46,8 @@ class enemy1():
         self.x += self.vx
         self.img = self.enemyAnim[(self.t // 2 )% 2] 
         self.t = self.t + 1
-        
-class enemyW(): # running in four legs
+# big boy
+class enemyW():
     def __init__(self):
         self.enemyAnimA = [GLib.enemy3, GLib.enemy32]
         self.img = GLib.enemy3
@@ -59,8 +59,8 @@ class enemyW(): # running in four legs
         self.x += self.vx      
         self.img = self.enemyAnimA[(self.t // 2)% 2]
         self.t = self.t + 1        
-  
-class enemyQ(): # Dragon
+# drag boy  
+class enemyQ(): 
     def __init__(self):
         self.enemyAnimaT = [GLib.enemy4, GLib.enemy42]
         self.img = GLib.enemy4
@@ -72,8 +72,8 @@ class enemyQ(): # Dragon
         self.x += self.vx
         self.img = self.enemyAnimaT[(self.t // 2)% 2]
         self.t = self.t + 1
-
-class enemyT(): # griffin
+ #grif boy
+class enemyT():
     def __init__(self):
         self.enemyAnim = [GLib.enemy6,GLib.enemy62]
         self.img = GLib.enemy6
@@ -85,13 +85,13 @@ class enemyT(): # griffin
         self.x += self.vx
         self.img = self.enemyAnim[(self.t // 2 )% 2] 
         self.t = self.t + 1
-
+#wtf another original basic boy??
 class enemyK():
     def __init__(self):
-        self.enemyAnim = [GLib.enemyF,GLib.enemy2]
-        self.img = GLib.enemyF
+        self.enemyAnim = [GLib.enemy5,GLib.enemy52]
+        self.img = GLib.enemy5
         self.x = 1225
-        self.vx = -8
+        self.vx = -3
         self.y=EnemyPositionList[random.randint(0,len(EnemyPositionList)-1)]
         self.t =0
     def update(self):
@@ -261,7 +261,10 @@ class Game:
                 if e.x<=-50:
                     self.enemy3List.remove(e)
                     self.Lives-=1
-
+            if self.damageTimer > self.timer:
+                self.damagetext.update("Damage Taken!")
+            else:
+                self.damagetext.update(" ")
             for e in self.enemy4List:
                 e.update()
                 if e.x<=-50:
