@@ -261,6 +261,7 @@ class Game:
                 if e.x<=-50:
                     self.enemy3List.remove(e)
                     self.Lives-=1
+                    self.damageTimer = self.timer+10
             if self.damageTimer > self.timer:
                 self.damagetext.update("Damage Taken!")
             else:
