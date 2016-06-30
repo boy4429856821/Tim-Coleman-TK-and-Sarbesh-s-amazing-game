@@ -24,11 +24,13 @@ from GameLogic import *
 
 # acquire a game object
 game = Game()
+sprite = Sprite()
 
 # Let state1 be the initial state
 state = "Startscreen2"
 GLib.gamesound.play(-1)
-
+EEvariable=0
+EEvariable2=0
 
 #-------------------------
 # Our Main Loop
@@ -72,7 +74,16 @@ while True:
 
             if event.key == pygame.K_RIGHT:
                 game.sprite.x += 20
-          
+        
+        #Easter Egg
+            if event.key == pygame.K_f and state == "Startscreen":
+                EEvariable=10
+            if event.key == pygame.K_r and EEvariable == 10 and state == "Startscreen":
+                EEvariable=20
+            if event.key == pygame.K_e and EEvariable == 20 and state == "Startscreen":
+                EEvariable=30
+            if event.key == pygame.K_d and EEvariable == 30 and state == "Startscreen":
+                game.Lives=99999999
                 
                 #state = "MovingLeft"            
             if event.key == pygame.K_UP:
@@ -126,8 +137,6 @@ while True:
                 state= "ControlScreen"
                # game.objectsOnScreen = [game.enemyList, game.enemy2List, game.enemy3List, game.bulletList, game.score, game.ammo, game.sprite, game.damagetext]
               
-               
-
     #-------------------------
     # The main game logic block
     #-------------------------
