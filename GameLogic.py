@@ -240,9 +240,6 @@ class Game:
                     e=enemy1()
                     self.enemyList.append(e)
                 if self.timer % 80 == 0:
-                    e=enemyT()
-                    self.enemy4List.append(e)
-                if self.timer % 80 == 0:
                     e=enemyK()
                     self.enemy5List.append(e)
             if self.timer > 2499 and self.timer < 3000:
@@ -258,9 +255,6 @@ class Game:
                 if self.timer % 110 == 0:
                     e=enemyQ()
                     self.enemy3List.append(e)
-                if self.timer % 110 == 0:
-                    e=enemyT()
-                    self.enemy4List.append(e)
             if self.timer > 2999:
                 if self.timer % 150 == 0:
                     e=enemy1()
@@ -269,11 +263,11 @@ class Game:
                     e=enemyW()
                     self.enemy2List.append(e)
                 if self.timer % 150 == 0:
+                    e=enemyW()
+                    self.enemy2List.append(e)                    
+                if self.timer % 150 == 0:
                     e=enemyQ()
                     self.enemy3List.append(e)
-                if self.timer % 150 == 0:
-                    e=enemyT()
-                    self.enemy4List.append(e)
                 if self.timer % 150 == 0:
                     e=enemyK()
                     self.enemy5List.append(e)
@@ -281,8 +275,6 @@ class Game:
             for e in self.enemyList: 
                 e.update()
                 if e.x<=-50:
-                    if e in self.enemy4List:
-                        self.enemy4List.remove(e)
                     if e in self.enemy2List:
                         self.enemy2List.remove(e)
                     if e in self.enemy3List:
@@ -301,8 +293,6 @@ class Game:
                 if e.x<=-50:
                     if e in self.enemyList:
                         self.enemyList.remove(e)
-                    if e in self.enemy4List:
-                        self.enemy4List.remove(e)
                     if e in self.enemy3List:
                         self.enemy3List.remove(e)
                     self.enemy2List.remove(e)
@@ -320,26 +310,8 @@ class Game:
                         self.enemyList.remove(e)
                     if e in self.enemy2List:
                         self.enemy2List.remove(e)
-                    if e in self.enemy4List:
-                        self.enemy4List.remove(e)
                     self.enemy3List.remove(e)
                     self.Lives-=1
-                    self.damageTimer=self.timer+10
-            if self.damageTimer > self.timer:
-                self.damagetext.update("Damage Taken!")
-            else:
-                self.damagetext.update(" ")
-            for e in self.enemy4List:
-                e.update()
-                if e.x<=-50:
-                    if e in self.enemyList:
-                        self.enemyList.remove(e)
-                    if e in self.enemy2List:
-                        self.enemy2List.remove(e)
-                    if e in self.enemy3List:
-                        self.enemy3List.remove(e)
-                    self.Lives-=1
-                    self.enemy4List.remove(e)
                     self.damageTimer=self.timer+10
             if self.damageTimer > self.timer:
                 self.damagetext.update("Damage Taken!")
@@ -349,8 +321,6 @@ class Game:
             for e in self.enemy5List:
                 e.update()
                 if e.x<=-50:
-                    if e in self.enemy4List:
-                        self.enemy4List.remove(e)
                     self.Lives-=1
                     self.enemy5List.remove(e)
                     self.damageTimer=self.timer+10
@@ -396,13 +366,6 @@ class Game:
                             self.enemy3List.remove(e)
                         self.EQlives=2
                         break
-                for e in self.enemy4List:    
-                    if hasCollideRect(i, e):
-                        if i in self.bulletList:
-                            self.bulletList.remove(i)
-                        if e in self.enemy4List:    
-                            self.enemy4List.remove(e)
-                        break
                 for e in self.enemy5List:
                     if hasCollideRect(i, e):
                         if i in self.bulletList:
@@ -438,17 +401,6 @@ class Game:
                     if e in self.enemy3List:    
                         self.enemy3List.remove(e)
                     self.Lives -= 1
-                    self.damageTimer=self.timer+10
-            if self.damageTimer > self.timer:
-                self.damagetext.update("Damage Taken!")
-            else:
-                self.damagetext.update(" ")
-           
-            for e in self.enemy4List:
-                if hasCollideRect(self.sprite, e):
-                    if e in self.enemy4List:    
-                        self.enemy4List.remove(e)
-                    self.Lives -= 2
                     self.damageTimer=self.timer+10
             if self.damageTimer > self.timer:
                 self.damagetext.update("Damage Taken!")

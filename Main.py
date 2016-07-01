@@ -98,7 +98,7 @@ while True:
                  state = "Attack"
                  game.shoot()
                  GLib.bulletSound.play()
-                 game.objectsOnScreen = [game.enemyList, game.enemy2List, game.enemy3List, game.enemy4List, game.bulletList, game.score, game.ammo, game.sprite, game.damagetext]
+                 game.objectsOnScreen = [game.enemyList, game.enemy2List, game.enemy3List, game.enemy4List, game.enemy5List, game.bulletList, game.score, game.ammo, game.sprite, game.damagetext]
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT:
