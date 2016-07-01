@@ -105,8 +105,7 @@ class enemyT():
         self.x = 1225
         self.vx = -10
         self.y=EnemyPositionList[random.randint(0,len(EnemyPositionList)-1)]
-        self.t =0
-        
+        self.t =0  
     def update(self):
         self.x += self.vx
         self.img = self.enemyAnim[(self.t // 2 )% 2] 
@@ -300,6 +299,7 @@ class Game:
                     self.enemyList.remove(e)
                     self.Lives -= 1
                     self.damageTimer=self.timer+10
+            
             if self.damageTimer > self.timer:
                 self.damagetext.update("Damage Taken!")
             else:
@@ -339,7 +339,6 @@ class Game:
             else:
                 self.damagetext.update(" ")
             for e in self.enemy4List:
-                print(e)
                 e.update()
                 if e.x<=-50:
                     if e in self.enemyList:

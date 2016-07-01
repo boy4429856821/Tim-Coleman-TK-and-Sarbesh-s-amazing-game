@@ -66,6 +66,8 @@ while True:
                 game.sprite.y += 20
             
         if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_q:
+                exit()
             if event.key == pygame.K_LEFT:
                 game.sprite.x += -20
               
