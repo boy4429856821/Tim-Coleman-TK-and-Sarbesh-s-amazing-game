@@ -14,13 +14,6 @@ class damagetaken:
     def update(self, damagetext):
         myfont=pygame.font.SysFont('Calibri',70,bold=True)
         self.img=myfont.render(str(damagetext),1,GLib.RED)
-class ReloadPopUp:
-    def __init__(self):
-        self.x = 300
-        self.y = 350
-    def update(self, Reloadtext):
-        myfont=pygame.font.SysFont('Calibri',70,bold=True)
-        self.img=myfont.render(str(Reloadtext),1,GLib.RED)
         
 class Score:
     def __init__(self):
@@ -199,8 +192,6 @@ class Game:
                 self.bulletList.append(Bullet(self.sprite.x , self.sprite.y ))
                 self.LastBulletShot=self.timer
                 self.sprite.bullets-=1
-            if self.reloadTimer < 5 :
-                Reloadtext.update("Reload!")
 
 
     # Try to update all the elements

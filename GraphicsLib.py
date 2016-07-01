@@ -30,6 +30,7 @@ ShootingSprite =[character1,shotsFired]
 Realbackground = pygame.image.load('Mbackground.png')
 Realbackground= pygame.transform.scale(Realbackground,(1250,800))
 characterAnimationL = [character1,character2]
+Reloadimg = pygame.image.load("Reload Image.png")
 Startscreen = pygame.image.load("starting pic.png")
 Startscreen = pygame.transform.scale(Startscreen,(1300,700))
 Startscreen2 = pygame.image.load("ChocoBible.png")
