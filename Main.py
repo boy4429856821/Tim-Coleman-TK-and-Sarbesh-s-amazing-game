@@ -136,7 +136,7 @@ while True:
                 state= "Normal"
             elif state == "Died":
                 game = Game()
-                state= "ControlScreen"
+                state= "Startscreen"
                # game.objectsOnScreen = [game.enemyList, game.enemy2List, game.enemy3List, game.bulletList, game.score, game.ammo, game.sprite, game.damagetext]
               
     #-------------------------
